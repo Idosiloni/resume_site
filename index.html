@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ido Siloni — Player One</title>
+<meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a realtime family app, and a lot of lessons.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5a36'/%3E%3Ctext x='7' y='23' font-family='sans-serif' font-size='17' font-weight='800' fill='%231b1633'%3EIS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Heebo:wght@500;700;800&display=swap">
+<style>
+:root{--paper:#fff3da;--ink:#1b1633;--card:#fffaf0;--red:#ff5a36;--lime:#b6f23c;--sky:#62c8ff;--vio:#8b5cf6;--pink:#ff8fc7;--mut:#5a5372;--bd:3px solid var(--ink);--sh:5px 5px 0 var(--ink)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Bricolage Grotesque",Heebo,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+ background-image:radial-gradient(rgba(27,22,51,.12) 1.2px,transparent 1.2px);background-size:22px 22px}
+a{color:inherit}
+.mono{font-family:"DM Mono",Heebo,ui-monospace,monospace}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:88px 0;position:relative}
+.kick{font-family:"DM Mono",Heebo,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:10px;align-items:center;background:var(--ink);color:var(--paper);padding:6px 12px;border-radius:8px;margin-bottom:18px}
+h2{font-size:clamp(36px,6vw,68px);line-height:.98;letter-spacing:-.035em;font-weight:800;margin-bottom:12px}
+.lead{font-size:19px;color:var(--mut);max-width:620px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:700 17px "Bricolage Grotesque",sans-serif;background:var(--red);color:var(--ink);border:var(--bd);border-radius:14px;padding:14px 22px;box-shadow:var(--sh);text-decoration:none;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.alt{background:var(--card)}
+:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* top HUD */
+.hud{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:var(--bd)}
+.hud .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.hud .name{font-weight:800;letter-spacing:-.02em;font-size:20px;text-decoration:none;white-space:nowrap}
+.hud .name i{font-style:normal;background:var(--red);border:2px solid var(--ink);border-radius:8px;padding:1px 7px;margin-inline-end:8px}
+.xp{flex:1;display:flex;align-items:center;gap:10px;font-size:12px;max-width:380px;margin-inline-start:auto}
+.xp .bar{flex:1;height:14px;border:2px solid var(--ink);border-radius:99px;background:#fff;overflow:hidden}
+.xp .bar b{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--lime) 0 8px,#9bd62a 8px 16px);border-right:2px solid var(--ink);transition:width .15s}
+.hud nav{display:flex;gap:6px}
+.hud nav a{font-weight:700;font-size:15px;text-decoration:none;padding:6px 12px;border-radius:10px;border:2px solid transparent}
+.hud nav a:hover,.hud nav a.on{border-color:var(--ink);background:var(--lime)}
+
+/* hero */
+.hero{padding:56px 0 70px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.pl{font-family:"DM Mono",Heebo,monospace;font-size:14px;margin-bottom:14px;display:flex;gap:12px;flex-wrap:wrap}
+.pl span{border:2px solid var(--ink);border-radius:8px;padding:3px 10px;background:var(--card)}
+.pl span:first-child{background:var(--lime)}
+h1{font-size:clamp(54px,9.5vw,118px);line-height:.88;letter-spacing:-.05em;font-weight:800}
+h1 .u{position:relative;display:inline-block;color:var(--red);-webkit-text-stroke:0}
+h1 .u svg{position:absolute;inset-inline-start:0;bottom:-10px;width:100%;height:16px}
+.sub{font-size:clamp(19px,2.3vw,25px);max-width:520px;margin:26px 0 30px;line-height:1.35}
+.sub b{background:linear-gradient(transparent 55%,var(--lime) 55%);}
+.cta{display:flex;gap:16px;flex-wrap:wrap}
+/* ID card */
+.card3d{perspective:900px}
+.idc{background:var(--card);border:var(--bd);border-radius:26px;box-shadow:8px 8px 0 var(--ink);padding:18px;transform-style:preserve-3d;transition:transform .15s;position:relative;overflow:hidden}
+.idc::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 45%,rgba(98,200,255,.25) 52%,transparent 66%);transform:translateX(var(--gx,-120%));transition:transform .4s;pointer-events:none;mix-blend-mode:soft-light}
+.idc .top{display:flex;justify-content:space-between;font-family:"DM Mono",Heebo,monospace;font-size:12px;margin-bottom:12px}
+.idc .top b{background:var(--red);border:2px solid var(--ink);border-radius:6px;padding:1px 8px}
+.idc .pic{border:var(--bd);border-radius:18px;overflow:hidden;aspect-ratio:1/1;background:var(--sky);position:relative}
+.idc .pic img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05)}
+.idc .pic .tag{position:absolute;inset-inline-start:10px;bottom:10px;background:var(--lime);border:2px solid var(--ink);border-radius:8px;font:500 12px "DM Mono",Heebo,monospace;padding:2px 8px}
+.idc h3{font-size:26px;letter-spacing:-.03em;margin:14px 0 2px;line-height:1}
+.idc .cls{font-family:"DM Mono",Heebo,monospace;font-size:13px;color:var(--mut)}
+.stats{margin-top:14px;display:grid;gap:9px}
+.st{display:grid;grid-template-columns:104px 1fr;gap:10px;align-items:center;font:500 12px "DM Mono",Heebo,monospace}
+.st .bar{height:12px;border:2px solid var(--ink);border-radius:99px;background:#fff;overflow:hidden}
+.st .bar b{display:block;height:100%;width:0;background:var(--c,var(--vio));transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+
+/* ticker */
+.ticker{border-block:var(--bd);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;font:500 15px "DM Mono",Heebo,monospace}
+.ticker .t{display:inline-flex;gap:0;animation:tick 38s linear infinite}
+.ticker span{padding:14px 28px}.ticker span::after{content:"✦";margin-left:56px;color:var(--lime)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* about / numbers */
+.about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.about p{font-size:clamp(19px,2.1vw,24px);line-height:1.4;margin-bottom:18px}
+.about p mark{background:var(--pink);padding:0 6px;border-radius:6px}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.num{background:var(--card);border:var(--bd);border-radius:20px;box-shadow:var(--sh);padding:18px}
+.num:nth-child(1){background:var(--lime)}.num:nth-child(4){background:var(--sky)}
+.num b{display:block;font-size:46px;letter-spacing:-.05em;line-height:1;font-weight:800}
+.num span{font:500 12px "DM Mono",Heebo,monospace}
+
+/* cartridges */
+.shelf{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.cart{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;background:var(--cc,var(--card));border:var(--bd);border-radius:22px 22px 14px 14px;box-shadow:var(--sh);overflow:hidden;transition:transform .15s,box-shadow .15s;position:relative}
+.cart:hover{transform:translate(-3px,-5px) rotate(-.6deg);box-shadow:9px 11px 0 var(--ink)}
+.cart:focus-visible{outline:3px solid var(--vio);outline-offset:4px}
+.cart .art{height:240px;border-bottom:var(--bd);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.cart .art img.cov{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cart .grip{position:absolute;left:50%;top:-1px;transform:translateX(-50%);width:90px;height:14px;background:var(--ink);border-radius:0 0 12px 12px;z-index:2}
+.cart .meta{padding:20px 22px 22px}
+.cart .row{display:flex;justify-content:space-between;align-items:center;font:500 12px "DM Mono",Heebo,monospace;margin-bottom:8px}
+.cart .plat{background:var(--ink);color:var(--paper);padding:2px 9px;border-radius:6px}
+.cart h3{font-size:30px;letter-spacing:-.035em;line-height:1;font-weight:800}
+.cart p{margin:8px 0 14px;color:#3b3558;font-size:16px}
+.cart .go{font-weight:800;display:inline-flex;gap:8px;align-items:center}
+.cart .go i{font-style:normal;display:inline-grid;place-items:center;width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;background:var(--lime);transition:transform .15s}
+.cart:hover .go i{transform:translateX(5px)}
+html[dir=rtl] .cart:hover .go i{transform:translateX(-5px)}
+/* cart art specials */
+.art.ltt{background:linear-gradient(135deg,#2b1a5e,#7a34c8 60%,#ff5a9a)}
+.art.ltt img.ic{position:absolute;width:74px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.4));animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-12px) rotate(5deg)}}
+.art.stf{background:linear-gradient(180deg,#58b9ff,#bfe8ff 70%,#fff3da)}
+.art.stf .big{font-size:120px;font-weight:800;letter-spacing:-.06em;color:var(--ink);-webkit-text-stroke:0;text-shadow:5px 5px 0 var(--lime);position:relative;z-index:1}
+.art.stf .cl{position:absolute;background:#fff;border:3px solid var(--ink);border-radius:99px;height:34px;animation:drift 14s linear infinite}
+@keyframes drift{from{transform:translateX(-140px)}to{transform:translateX(560px)}}
+.art.fam{background:#f4efe6}
+.mini{background:#fff;border:3px solid var(--ink);border-radius:18px;width:min(250px,76%);padding:14px 16px;direction:rtl;text-align:right;font:700 14px Heebo,sans-serif;box-shadow:4px 4px 0 var(--ink)}
+.mini h4{font:800 16px Heebo;margin-bottom:6px;display:flex;justify-content:space-between}
+.mini .r{display:flex;gap:9px;align-items:center;padding:7px 0;border-top:2px dashed #ddd}
+.mini .r i{width:16px;height:16px;border:2px solid var(--ink);border-radius:5px;flex:none}
+.mini .r.d{opacity:.4;text-decoration:line-through}.mini .r.d i{background:var(--ink)}
+.mini .sec{font-size:11px;background:var(--lime);border:2px solid var(--ink);border-radius:6px;padding:0 6px;margin-inline-start:auto}
+
+/* inventory */
+.inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+.slot{background:var(--card);border:var(--bd);border-radius:18px;padding:16px;position:relative;transition:transform .12s;box-shadow:4px 4px 0 var(--rc,var(--ink))}
+.slot:hover{transform:translateY(-4px) rotate(-1deg)}
+.slot .ic{width:46px;height:46px;border:2px solid var(--ink);border-radius:12px;display:grid;place-items:center;font:800 18px "Bricolage Grotesque";background:var(--rc);margin-bottom:10px}
+.slot b{display:block;font-size:17px;letter-spacing:-.02em;line-height:1.1}
+.slot span{font:500 12px "DM Mono",Heebo,monospace;color:var(--mut);display:block;margin-top:4px}
+.slot em{position:absolute;inset-inline-end:10px;top:10px;font:500 10px "DM Mono",Heebo,monospace;font-style:normal;text-transform:uppercase;letter-spacing:.08em;border:2px solid var(--ink);border-radius:6px;padding:0 6px;background:var(--rc)}
+.lang{all:unset;cursor:pointer;box-sizing:border-box;font:800 15px "Bricolage Grotesque",Heebo,sans-serif;background:var(--lime);border:2px solid var(--ink);border-radius:10px;min-height:44px;min-width:44px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--ink);white-space:nowrap}.lang:focus-visible{outline:3px solid var(--vio);outline-offset:3px}
+html[lang=he] *{letter-spacing:normal!important}.num b,.cstats b{direction:ltr;unicode-bidi:isolate}html[dir=rtl] .num b,html[dir=rtl] .cstats b{text-align:right}html[lang=he] h1{line-height:1}html[lang=he] .kick,html[lang=he] .ex h4,html[lang=he] .cs h4{text-transform:none}
+.legend{font:500 12px "DM Mono",Heebo,monospace;margin-top:16px;color:var(--mut)}
+
+.learn{margin-top:56px}.learn h3{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.03em;margin-bottom:18px;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:var(--card);border:var(--bd);border-radius:20px;box-shadow:var(--sh);padding:20px 20px 22px}
+.step b{display:grid;place-items:center;width:36px;height:36px;border:var(--bd);border-radius:50%;background:var(--lime);font-weight:800;margin-bottom:10px}
+.step:nth-child(2) b{background:var(--sky)}.step:nth-child(3) b{background:var(--pink)}
+.step h4{font-size:19px;letter-spacing:-.02em;line-height:1.15;margin-bottom:6px}.step p{color:var(--mut);font-size:15px}
+.proof{margin-top:18px;font-weight:700;font-size:17px;background:var(--lime);border:var(--bd);border-radius:14px;padding:12px 16px;display:inline-block;box-shadow:4px 4px 0 var(--ink)}
+/* quest path */
+.path{position:relative;display:grid;gap:30px;padding-inline-start:64px}
+.path::before{content:"";position:absolute;inset-inline-start:23px;top:8px;bottom:8px;width:0;border-inline-start:4px dashed var(--ink)}
+.lvl{position:relative;background:var(--card);border:var(--bd);border-radius:22px;box-shadow:var(--sh);padding:26px 28px}
+.lvl .node{position:absolute;inset-inline-start:-64px;top:22px;width:48px;height:48px;border:var(--bd);border-radius:50%;background:var(--c,var(--lime));display:grid;place-items:center;font:800 18px "Bricolage Grotesque"}
+.lvl .when{font:500 13px "DM Mono",Heebo,monospace;color:var(--mut)}
+.lvl .head{display:flex;gap:18px;align-items:center;margin:4px 0 10px}
+.badge{flex:none;width:68px;height:68px}
+.lvl h3{font-size:28px;letter-spacing:-.03em;line-height:1.05}
+.lvl .org{font-weight:500;color:var(--mut)}
+.lvl ul{padding-inline-start:20px;font-size:16px}.lvl li{margin:5px 0}
+.ach{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.ach span{display:inline-flex;align-items:center;gap:8px;font:500 13px "DM Mono",Heebo,monospace;background:var(--lime);border:2px solid var(--ink);border-radius:99px;padding-block:5px;padding-inline:8px 13px}
+.ach svg{width:22px;height:22px}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.ex{background:var(--card);border:var(--bd);border-radius:18px;padding:18px;box-shadow:4px 4px 0 var(--ink)}
+.ex h4{font-size:15px;font-family:"DM Mono",Heebo,monospace;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.ex p{font-size:17px;line-height:1.35}
+
+/* contact */
+.contact .box{background:var(--vio);color:#fff;border:var(--bd);border-radius:34px;box-shadow:10px 10px 0 var(--ink);padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;position:relative;overflow:hidden}
+.contact h2{color:#fff}
+.contact .blink{font:500 14px "DM Mono",Heebo,monospace;animation:bl 1.2s steps(2) infinite;color:var(--lime)}
+@keyframes bl{50%{opacity:0}}
+form{display:grid;gap:12px}
+input,textarea{font:500 16px "Bricolage Grotesque";padding:14px 16px;border:var(--bd);border-radius:14px;background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:120px;resize:vertical}
+.mail{display:inline-block;margin-top:16px;font-weight:800;font-size:20px;color:var(--ink);background:var(--lime);border:var(--bd);border-radius:12px;padding:8px 14px;text-decoration:none;box-shadow:4px 4px 0 var(--ink)}
+footer{padding:40px 0 60px;text-align:center;font:500 13px "DM Mono",Heebo,monospace;color:var(--mut)}
+
+/* dialog */
+dialog{border:var(--bd);border-radius:28px;padding:0;background:var(--paper);color:var(--ink);width:min(980px,94vw);max-height:92vh;box-shadow:12px 12px 0 var(--ink);overflow:auto;margin:auto}
+dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
+.dlg-top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--ink);color:var(--paper);font:500 13px "DM Mono",Heebo,monospace}
+.dlg-top button{all:unset;cursor:pointer;background:var(--red);color:var(--ink);font:800 14px "Bricolage Grotesque";border:2px solid var(--paper);border-radius:10px;padding:4px 14px}
+.dlg-top button:focus-visible{outline:3px solid var(--lime)}
+.cs{padding:34px clamp(20px,4vw,48px) 48px}
+.cs h3{font-size:clamp(38px,6vw,66px);letter-spacing:-.045em;line-height:.95;font-weight:800;margin:6px 0 10px}
+.cs .pitch{font-size:21px;max-width:720px;line-height:1.35}
+.cs .tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.cs .tags span{font:500 12px "DM Mono",Heebo,monospace;border:2px solid var(--ink);border-radius:8px;padding:2px 10px;background:var(--card)}
+.cs h4{font:500 13px "DM Mono",Heebo,monospace;text-transform:uppercase;letter-spacing:.12em;margin:34px 0 12px;display:flex;gap:10px;align-items:center}
+.cs h4::after{content:"";flex:1;height:0;border-top:3px solid var(--ink)}
+.loop{display:flex;flex-wrap:wrap;gap:8px 4px;align-items:center}
+.loop span{font-weight:800;font-size:15px;border:var(--bd);border-radius:12px;padding:8px 14px;background:var(--card);transition:.2s}
+.loop span.hot{background:var(--lime);transform:translateY(-4px);box-shadow:3px 3px 0 var(--ink)}
+.loop i{font-style:normal;font-weight:800}
+.cs .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cs ul{padding-inline-start:20px}.cs li{margin:7px 0}
+.rules{display:grid;gap:10px}
+.rule{display:flex;gap:12px;background:var(--card);border:var(--bd);border-radius:14px;padding:12px 14px;box-shadow:3px 3px 0 var(--ink)}
+.rule b{flex:none;font:500 12px "DM Mono",Heebo,monospace;background:var(--red);border:2px solid var(--ink);border-radius:6px;height:24px;display:grid;place-items:center;padding:0 7px}
+.rule div{font-size:15px;line-height:1.35}
+.cstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.cstats div{background:var(--cc,var(--lime));border:var(--bd);border-radius:16px;padding:14px;box-shadow:4px 4px 0 var(--ink)}
+.cstats b{display:block;font-size:38px;letter-spacing:-.05em;line-height:1;font-weight:800}
+.cstats span{font:500 12px "DM Mono",Heebo,monospace}
+.gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 16px}
+.gal img{height:240px;width:auto;border:var(--bd);border-radius:16px;scroll-snap-align:start;box-shadow:4px 4px 0 var(--ink);flex:none;background:#fff}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:10px}
+.icons div{background:linear-gradient(135deg,#2b1a5e,#7a34c8);border:var(--bd);border-radius:14px;aspect-ratio:1;display:grid;place-items:center}
+.icons img{width:70%}
+.note{font:500 13px "DM Mono",Heebo,monospace;color:var(--mut);margin-top:10px}
+.tl{display:flex;flex-wrap:wrap;gap:8px}
+.tl span{font:500 12px "DM Mono",Heebo,monospace;background:var(--ink);color:var(--paper);border-radius:8px;padding:4px 10px}
+
+@media(max-width:860px){
+ .hud nav,.xp .lab{display:none}.xp{margin-inline-start:auto}.hud .wrap{gap:10px}.hud .name{font-size:17px}
+ .hero .wrap,.about .wrap,.shelf,.steps,.contact .box,.cs .two,.extras{grid-template-columns:1fr}
+ .card3d{max-width:380px}
+ section{padding:60px 0}.contact .box{padding:30px 22px}
+ .path{padding-inline-start:50px}.lvl .node{inset-inline-start:-50px;width:40px;height:40px}.path::before{inset-inline-start:18px}
+ .lvl{padding:20px}.cart .art{height:200px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hud"><div class="wrap">
+  <a class="name" href="#top"><i>IS</i>Ido Siloni</a>
+  <nav aria-label="Sections">
+    <a href="#about">Player</a><a href="#work">Games</a><a href="#inventory">Inventory</a><a href="#quests">Quests</a><a href="#contact">Continue</a>
+  </nav>
+  <button class="lang" id="lang" type="button" lang="he" aria-label="Switch language to Hebrew">עברית</button>
+  <div class="xp mono" aria-hidden="true"><span class="lab">PAGE XP</span><div class="bar"><b id="xp"></b></div><span id="xpn">0%</span></div>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="pl"><span>PLAYER 1</span><span>LVL 23</span><span>Hod HaSharon, IL</span></div>
+    <h1>Ido<br>Siloni<span class="u" aria-hidden="true"><svg viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M2 10 C 50 2, 100 14, 150 8 S 250 4, 298 9" fill="none" stroke="#ff5a36" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
+    <p class="sub">Former Air Force <b>shift manager</b>. Now I build <b>games and apps</b> with AI as my co-pilot.</p>
+    <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a></div>
+  </div>
+  <div class="card3d"><div class="idc" id="idc">
+    <div class="top"><span>PLAYER CARD</span><b>CLASS: BUILDER</b></div>
+    <div class="pic"><img src="assets/photo.jpg" alt="Portrait of Ido Siloni"><span class="tag">AFK: never</span></div>
+    <h3>Ido Siloni</h3><div class="cls">Shift Manager → Game &amp; App Builder</div>
+    <div class="stats" id="stats"></div>
+  </div></div>
+</div></section>
+
+<div class="ticker" aria-hidden="true"><div class="t" id="tick"></div></div>
+
+<section class="about" id="about"><div class="wrap">
+  <div class="reveal">
+    <div class="kick">// 01 player</div>
+    <h2>Calm under<br>pressure.</h2>
+    <p>For <mark>more than three years</mark> I managed shifts in an Air Force communications unit: round-the-clock coverage, several teams at once, and soldiers who counted on me. I learned to decide fast without losing sight of the big picture.</p>
+    <p>I studied <mark>cyber and computer science</mark> in high school. Now I combine that with AI tools to build things. On my own, I've made <mark>three Roblox games and a realtime family shopping app.</mark></p>
+    <p>I learn by building. Roblox Studio, Luau, Firebase, Vercel and more: I picked up each one by using it on a real project. Hand me a new tool and I'll be productive with it fast.</p>
+    <p style="font-size:17px;color:var(--mut)">Native Hebrew, fluent English. Off the clock: volleyball, CrossFit, basketball, and a lot of gaming.</p>
+  </div>
+  <div class="nums reveal">
+    <div class="num"><b data-n="4">0</b><span>projects built</span></div>
+    <div class="num"><b>3+</b><span>years of 24/7 shift work</span></div>
+    <div class="num"><b data-n="850" data-plus="1">0</b><span>design decisions logged for Fight To Steal</span></div>
+    <div class="num"><b data-n="14">0</b><span>commits in a single day on Family Cart</span></div>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="reveal"><div class="kick">// 02 games &amp; apps</div>
+  <h2>Pick a cartridge.</h2>
+  <p class="lead">Four projects I built start to finish. Open one for the full story: the core loop, the rules I set for myself, and the numbers.</p></div>
+  <div class="shelf" id="shelf"></div>
+</div></section>
+
+<section id="inventory"><div class="wrap">
+  <div class="reveal"><div class="kick">// 03 inventory</div>
+  <h2>What's in the bag.</h2>
+  <p class="lead">Every tool here was used on a real project, and I taught myself each one.</p></div>
+  <div class="inv" id="inv"></div>
+  <p class="legend">RARITY → <strong style="background:#b6f23c;padding:0 6px;border:2px solid #1b1633;border-radius:5px">daily driver</strong> · <strong style="background:#62c8ff;padding:0 6px;border:2px solid #1b1633;border-radius:5px">solid</strong> · <strong style="background:#ff8fc7;padding:0 6px;border:2px solid #1b1633;border-radius:5px">learning</strong></p>
+  <div class="learn reveal">
+    <h3>How I pick up a new tool</h3>
+    <div class="steps">
+      <div class="step"><b>1</b><h4>Start with a real problem</h4><p>No tutorials for their own sake. I pick something I actually want to build.</p></div>
+      <div class="step"><b>2</b><h4>Learn just enough to build it</h4><p>Docs, AI help and trial and error until the first version runs.</p></div>
+      <div class="step"><b>3</b><h4>Ship it, break it, fix it</h4><p>Playtests and real bugs teach the rest. Then the tool joins the toolbox.</p></div>
+    </div>
+    <p class="proof">Luau, Firebase, Vercel, Python simulators and AI coding tools: each one learned by building something with it.</p>
+  </div>
+</div></section>
+
+<section id="quests"><div class="wrap">
+  <div class="reveal"><div class="kick">// 04 quest log</div>
+  <h2>Levels cleared.</h2>
+  <p class="lead">Scouts, school, the Air Force, and now building. In order.</p></div>
+  <div class="path">
+
+    <article class="lvl reveal" style="--c:var(--pink)">
+      <div class="node">1</div>
+      <div class="when">2015 → 2018 · Hod HaSharon</div>
+      <div class="head">
+        <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="Scouts badge"><circle cx="40" cy="40" r="34" fill="#ff8fc7" stroke="#1b1633" stroke-width="4"/><path d="M40 14l7 18h19L51 43l6 19-17-12-17 12 6-19L14 32h19z" fill="#fff3da" stroke="#1b1633" stroke-width="4" stroke-linejoin="round"/></svg>
+        <div><h3>Scouts instructor</h3><div class="org">Scouts movement · "Gaash" troop</div></div>
+      </div>
+      <ul><li>Joined as a participant, became an instructor.</li><li>My first real experience leading a group and running a program.</li></ul>
+    </article>
+
+    <article class="lvl reveal" style="--c:var(--sky)">
+      <div class="node">2</div>
+      <div class="when">2018 → 2021</div>
+      <div class="head">
+        <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="School badge"><circle cx="40" cy="40" r="34" fill="#62c8ff" stroke="#1b1633" stroke-width="4"/><path d="M16 30l24-11 24 11-24 11z" fill="#fff3da" stroke="#1b1633" stroke-width="4" stroke-linejoin="round"/><path d="M26 38v13c0 5 28 5 28 0V38" fill="none" stroke="#1b1633" stroke-width="4"/><path d="M64 30v16" stroke="#1b1633" stroke-width="4" stroke-linecap="round"/></svg>
+        <div><h3>Hadarim High School</h3><div class="org">Hod HaSharon · full matriculation</div></div>
+      </div>
+      <ul><li><b>10 units</b> of cyber and computer science.</li><li>5 units each in math, physics and English.</li></ul>
+      <div class="ach"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6" fill="#fff3da" stroke="#1b1633" stroke-width="2"/><path d="M8 14l-2 8 6-3 6 3-2-8" fill="#ff5a36" stroke="#1b1633" stroke-width="2" stroke-linejoin="round"/></svg>Certificate of excellence · 2021</span></div>
+    </article>
+
+    <article class="lvl reveal" style="--c:var(--lime)">
+      <div class="node">3</div>
+      <div class="when">2021 → 2025 · Kirya base</div>
+      <div class="head">
+        <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="Air Force badge"><circle cx="40" cy="40" r="34" fill="#b6f23c" stroke="#1b1633" stroke-width="4"/><path d="M40 16l5 26 21 8v5l-22-4-2 12h-4l-2-12-22 4v-5l21-8z" fill="#fff3da" stroke="#1b1633" stroke-width="4" stroke-linejoin="round"/></svg>
+        <div><h3>Shift Manager</h3><div class="org">Israeli Air Force · communications unit</div></div>
+      </div>
+      <ul>
+        <li>Ran the shift in an operational air wing, with 24/7 coverage where mistakes weren't an option.</li>
+        <li>Worked with several units at once and coordinated between departments and across ranks.</li>
+        <li>Led and trained the soldiers in my department.</li>
+        <li>2021–22: enlisted and completed professional training. 2022–25: shift manager.</li>
+      </ul>
+      <div class="ach">
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6" fill="#fff3da" stroke="#1b1633" stroke-width="2"/><path d="M8 14l-2 8 6-3 6 3-2-8" fill="#ff5a36" stroke="#1b1633" stroke-width="2" stroke-linejoin="round"/></svg>Outstanding Soldier · Jul 2023</span>
+        <span><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z" fill="#fff3da" stroke="#1b1633" stroke-width="2" stroke-linejoin="round"/></svg>Wing-wide Excellence Program · Jul 2023</span>
+      </div>
+    </article>
+
+    <article class="lvl reveal" style="--c:var(--red)">
+      <div class="node">4</div>
+      <div class="when">2026 → now</div>
+      <div class="head">
+        <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="Builder badge"><circle cx="40" cy="40" r="34" fill="#ff5a36" stroke="#1b1633" stroke-width="4"/><path d="M24 30l-10 10 10 10M56 30l10 10-10 10M45 22l-10 36" fill="none" stroke="#fff3da" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3>Builder</h3><div class="org">Games &amp; apps, with AI as co-pilot</div></div>
+      </div>
+      <ul><li>Three Roblox games and a realtime web app, with design docs, balance simulations and automated tests behind the games.</li><li>Learned the unglamorous parts of game development: economy balancing, anti-exploit checks and player analytics.</li></ul>
+    </article>
+  </div>
+
+  <div class="extras reveal">
+    <div class="ex"><h4>Languages</h4><p>Hebrew (native)<br>English (fluent)</p></div>
+    <div class="ex"><h4>Skills</h4><p>Java, Python, Word, PowerPoint. Fast, independent learner.</p></div>
+    <div class="ex"><h4>Off duty</h4><p>Volleyball, CrossFit, basketball, computers and games.</p></div>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap reveal">
+  <div class="box">
+    <div>
+      <div class="blink">▮ CONTINUE?  10… 9… 8…</div>
+      <h2>Let's make<br>something.</h2>
+      <p style="font-size:19px;max-width:380px">Hiring, collaborating, or got a strange idea for a game? I'd love to hear it.</p>
+      <a class="mail" href="mailto:ido.siloni@gmail.com">ido.siloni@gmail.com</a>
+    </div>
+    <form id="f">
+      <input id="n" placeholder="Name" required aria-label="Name">
+      <input id="e" type="email" placeholder="Email" required aria-label="Email">
+      <textarea id="m" placeholder="Message" required aria-label="Message"></textarea>
+      <button class="btn" type="submit">Insert coin →</button>
+    </form>
+  </div>
+</div></section>
+</main>
+<footer>© 2026 Ido Siloni · built with Claude Code</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="dlg-top"><span id="dlgKick"></span><button id="close" aria-label="Close case study">✕ CLOSE</button></div>
+  <div class="cs" id="cs"></div>
+</dialog>
+
+<script src="i18n.js"></script>
+<script>
+/* ---------- editable data ---------- */
+const STATS=[["Leadership",95,"#ff5a36"],["Under pressure",92,"#8b5cf6"],["Learns new tools",96,"#ffd24a"],["Game design",85,"#b6f23c"],["Python",72,"#62c8ff"],["Java",70,"#ff8fc7"],["English",90,"#ff5a36"]];
+const TICK=["Shift manager","Outstanding Soldier 2023","Roblox developer","10 units cyber & CS","Hebrew + English","Firebase","Luau","Python","Claude Code","Ships games","Learns tools fast"];
+const TOOLS=[
+ ["Claude Code","Plan → build → verify, on every project","CC","#b6f23c","daily driver"],
+ ["Roblox Studio","All three games live here","RS","#b6f23c","daily driver"],
+ ["Luau","Server + client game code","Lu","#b6f23c","daily driver"],
+ ["Studio MCP","Claude controls Studio directly","MC","#62c8ff","solid"],
+ ["Firebase","Firestore realtime + Hosting","Fb","#b6f23c","daily driver"],
+ ["Vercel","This site, deployed","Vc","#62c8ff","solid"],
+ ["Python","Balance & pacing simulators","Py","#62c8ff","solid"],
+ ["Java","High-school CS, 10 units","Jv","#62c8ff","solid"],
+ ["JavaScript","Family Cart, no framework","JS","#62c8ff","solid"],
+ ["Git","History for every repo","Gt","#62c8ff","solid"],
+ ["AI image gen","Thumbnails & icon sets","AI","#62c8ff","solid"],
+ ["HTML + CSS","This site and Family Cart","Ht","#62c8ff","solid"]
+];
+let lang='en',curId=null;
+const rtl=()=>lang==='he';
+const T=(en,he)=>rtl()&&he!=null&&he!==''?he:en;
+const U=(k,en)=>T(en,UI_HE[k]);
+const L=a=>a.map((x,i)=>`<span>${x}</span>${i<a.length-1?`<i>${rtl()?'←':'→'}</i>`:''}`).join('');
+const PH=(p,k)=>{const h=rtl()&&PROJ_HE[p.id];return h&&h[k]!=null?h[k]:p[k]};
+const PROJ=[
+{id:"fts",kick:"ROBLOX · 2026",plat:"Roblox",title:"Fight To Steal",short:"Roll fighters, draft a team of three, duel players, and the winner steals one.",
+ art:'<img class="cov" src="assets/fts-ko.jpg" alt="Fight To Steal key art: a lion knocks out a penguin">',cc:"#fffaf0",
+ pitch:"Collection economy meets team battles. Every fighter earns cash <i>and</i> fights, so even the ones you never field are worth stealing.",
+ tags:["Roblox","Luau","Game design","Live-ops","Economy"],
+ loop:["ROLL","EARN + TRAIN","POWER UP","DRAFT 3","DUEL","STEAL"],
+ built:["4 style families that double as a type chart (×1.5 advantage)","5 rarities with odds shown on the machine, and a visible pity counter","3v3 best-of-three auto-fights with simultaneous blind picks","Brackets by team power, a rookie shield, and a rescue-raid second chance","Steal walk across a shared plaza with a server-wide announce feed","Rebirth, mutations and a PvE gauntlet","A store that never double-charges or double-grants, thanks to idempotent purchase receipts"],
+ rules:[["01","Combat is deterministic. Staking items on a chance result would be wagering, and kids trust what they can predict."],["02","One progression system only. I cut the others after learning from the tycoon."],["03","No trading. Trading plus stealing is a scam surface a solo developer can't moderate."],["04","Never sell battle advantage or steal protection."],["05","Odds are honest and always shown."],["06","Every feature sits behind a config flag, and anything touching money or randomness gets a written policy check first."]],
+ stats:[["850+","numbered design decisions"],["~100","design & balance docs"],["8,200+","automated checks passing"],["34","bugs found in one audit"]],
+ gal:["fts-1","fts-2","fts-3","fts-4","fts-5","fts-6"],
+ story:["Jul 27 · concept written","Aug · milestones locked","Sep 23 · full audit","Sep 27 · relaunch","Sep 30 · pivot to an egg-based version, driven by real player data"],
+ note:"Key art generated with AI tools, then used for the game's thumbnails."},
+{id:"ltt",kick:"ROBLOX · 2026",plat:"Roblox",title:"Lucky Ticket Tycoon",short:"Scratch tickets by hand, hire scratch-bots, rebirth for permanent multipliers.",
+ art:'<img class="ic" style="left:9%;top:12%" src="assets/ltt/crown.png" alt=""><img class="ic" style="right:11%;top:10%;animation-delay:-1s" src="assets/ltt/gem_purple.png" alt=""><img class="ic" style="left:40%;top:34%;width:104px;animation-delay:-2s" src="assets/ltt/chest.png" alt=""><img class="ic" style="left:12%;bottom:10%;animation-delay:-3s" src="assets/ltt/clover.png" alt=""><img class="ic" style="right:14%;bottom:12%;animation-delay:-4s" src="assets/ltt/coin_stack.png" alt="">',artc:"ltt",cc:"#fffaf0",
+ pitch:"Two pulls working together: the tactile thrill of scratching a ticket, and the empire-building snowball of a Roblox tycoon.",
+ tags:["Roblox","Tycoon","Systems design","Server-authoritative"],
+ loop:["SCRATCH","EARN","UPGRADE / AUTOMATE","EXPAND","REBIRTH"],
+ built:["Drag-to-reveal ticket interface, with trap symbols","11 ticket tiers from a street kiosk to a mega emporium","Scratch-bots that earn while you're away","Two currencies: cash and prestige tokens","11 server services: data, tickets, economy, upgrades, automation, plot, rebirth, tutorial, monetization, leaderboard and engagement","An 8-phase upgrade plan, including 7 new card types like push-your-luck and memory pairs"],
+ rules:[["01","Retention first, revenue second. A game people return to daily earns more than one built to extract."],["02","The server owns cash, odds and payouts. The client never decides a result."],["03","Idle income stays below active play, so scratching always feels worth it."],["04","Fake currency only, no paid random rewards, and never pay-gate progression."],["05","Two outside AI reviews flagged the same risk: every card playing the same. That became the upgrade plan."]],
+ stats:[["11","ticket tiers"],["11","server services"],["36","custom symbol icons"],["7","new card archetypes planned"]],
+ icons:["cherry","seven","diamond_blue","gem_purple","crown","trophy","rocket","star","medal","heart","moneybag","sparkle_bonus","lemon","bell","clover","coin_stack"],
+ story:["Jun 21 · repo created","Design brief + working rules written","Upgrade plan drafted from outside reviews"],
+ note:"Symbol set shown below is the game's real icon set."},
+{id:"stf",kick:"ROBLOX · 2026",plat:"Roblox",title:"+1 Spin to Fly",short:"A flight game where I applied every lesson about security and data.",
+ art:'<div class="cl" style="top:18%;width:90px"></div><div class="cl" style="top:62%;width:130px;animation-delay:-6s"></div><div class="big">+1</div>',artc:"stf",cc:"#fffaf0",
+ pitch:"The next game after Fight To Steal, built on its lessons: every server number lives in config, and nothing the client sends can reach a player's save.",
+ tags:["Roblox","Luau","Anti-exploit","Analytics"],
+ loop:["SPIN","LAUNCH","FLY","EARN","UPGRADE","SPIN AGAIN"],
+ built:["A Guard that wraps every remote call: shape checks, number limits, rate limiting and one call in flight per player","Refusals go to the player as a notice and to analytics with a reason","An analytics registry that only sends declared events, with first-session funnels and quit-point tracking","Studio sessions never send data, they just print","Pacing tuned in a Python simulator that mirrors the in-game config line for line"],
+ rules:[["01","Every number lives in Config. Nothing is hard-coded."],["02","The client never sends a number that reaches a profile."],["03","Every feature ships behind a flag."],["04","If it isn't in the analytics registry, it isn't recorded."]],
+ stats:[["~8,000","lines of Luau"],["23","client modules"],["159","lines in the anti-exploit Guard"],["1","Python sim to tune pacing"]],
+ story:["Built after the Fight To Steal audit","Reuses its Guard, Analytics and config-flag patterns"],
+ note:"Screenshots to come."},
+{id:"fam",kick:"WEB APP · SEP 2026",plat:"Web",title:"Family Cart",short:"A shared shopping list that syncs live and sorts itself in store-walking order.",
+ art:'<div class="mini"><h4><span>העגלה המשפחתית</span><span>🛒</span></h4><div class="r"><i></i>עגבניות<span class="sec">ירקות</span></div><div class="r"><i></i>חלב<span class="sec">חלב</span></div><div class="r d"><i></i>לחם<span class="sec">מאפים</span></div><div class="r"><i></i>שוקולד<span class="sec">חטיפים</span></div></div>',artc:"fam",cc:"#fffaf0",
+ pitch:"No login, no accounts. One long random link is the cart, and everyone in the family sees changes the second they happen.",
+ tags:["JavaScript","Firebase","Firestore","PWA","Hebrew UI"],
+ loop:["ADD ITEM","AUTO-SORTED","WALK THE STORE","CHECK OFF","LIVE SYNC"],
+ built:["Realtime sync between family members' phones","12 supermarket sections, in the order you walk the store, which each family can re-order","A classifier that matches whole words and prefers the longest match, so \"chocolate milk\" and \"almond milk\" land in the right aisle","Paste a WhatsApp list and it splits it into items, even handling the Hebrew \"and\" prefix","Voice input, quick-add chips, quantity and notes, and who added what","Installable on the home screen, with connect-a-device by QR or WhatsApp","Themes, progress ring and a celebration card when the list is done"],
+ rules:[["01","The secret is the link: a 16+ character random id, and carts can't be listed."],["02","Database rules whitelist every field, with type and size limits."],["03","Items are rendered as text, never HTML."],["04","Brand names only decide the aisle when no product word matched, so \"Elite coffee\" stays coffee."]],
+ stats:[["1,583","lines of code, no framework"],["12","store sections"],["~950","product & brand words"],["14","commits, all in one day"]],
+ story:["Sep 30 · shared cart","Same day · Firebase, sorting, installable app","Same day · voice, WhatsApp import, 3 redesigns","Next: price comparison from Israeli chains' public price files"],
+ note:"Hebrew-first interface."}
+];
+
+/* ---------- build ---------- */
+const $=s=>document.querySelector(s);
+let barsOn=false;
+function renderBuilt(){
+ $('#stats').innerHTML=STATS.map((s,i)=>`<div class="st"><span>${T(s[0],STATS_HE[i])}</span><div class="bar"><b data-w="${s[1]}" style="--c:${s[2]};${barsOn?'width:'+s[1]+'%':''}"></b></div></div>`).join('');
+ $('#tick').innerHTML=[...TICK,...TICK,...TICK,...TICK].map((t,i)=>`<span>${T(t,TICK_HE[i%TICK.length])}</span>`).join('');
+ $('#inv').innerHTML=TOOLS.map((t,i)=>`<div class="slot" style="--rc:${t[3]}"><em>${U(t[4],t[4])}</em><div class="ic">${t[2]}</div><b>${t[0]}</b><span>${T(t[1],TOOLS_HE[i])}</span></div>`).join('');
+ $('#shelf').innerHTML=PROJ.map(p=>`<button class="cart in" data-id="${p.id}" style="--cc:${p.cc}" aria-label="${U('open','Open case study')}: ${p.title}"><div class="grip"></div><div class="art ${p.artc||''}">${p.art}</div><div class="meta"><div class="row"><span class="plat">${p.plat}</span><span>${PH(p,'yr')||p.kick.split(' · ')[1]}</span></div><h3>${p.title}</h3><p>${PH(p,'short')}</p><span class="go">${U('open','Open case study')} <i>${rtl()?'←':'→'}</i></span></div></button>`).join('');
+}
+renderBuilt();
+
+/* ---------- dialog ---------- */
+const dlg=$('#dlg');let loopTimer,lastBtn;
+function fillDialog(id){
+ const p=PROJ.find(x=>x.id===id);curId=id;
+ $('#dlgKick').textContent=U('cs','CASE STUDY')+' · '+PH(p,'kick');
+ $('#close').textContent=U('close','✕ CLOSE');$('#close').setAttribute('aria-label',U('closeAria','Close case study'));
+ const rules=PH(p,'rulesT'),stats=PH(p,'statsT');
+ $('#cs').innerHTML=`
+  <h3 id="dlgTitle">${p.title}</h3><p class="pitch">${PH(p,'pitch')}</p>
+  <div class="tags">${PH(p,'tags').map(t=>`<span>${t}</span>`).join('')}</div>
+  <h4>${U('loop','The core loop')}</h4><div class="loop" id="loop">${L(PH(p,'loop'))}</div>
+  <h4>${U('nums','By the numbers')}</h4><div class="cstats">${p.stats.map((s,i)=>`<div style="--cc:${['#b6f23c','#62c8ff','#ff8fc7','#ffd24a'][i%4]}"><b>${s[0]}</b><span>${stats?stats[i]:s[1]}</span></div>`).join('')}</div>
+  <div class="two">
+    <div><h4>${U('built','What I built')}</h4><ul>${PH(p,'built').map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    <div><h4>${U('rules','Rules I set')}</h4><div class="rules">${p.rules.map((r,i)=>`<div class="rule"><b>${r[0]}</b><div>${rules?rules[i]:r[1]}</div></div>`).join('')}</div></div>
+  </div>
+  ${p.gal?`<h4>${U('gal','Gallery')}</h4><div class="gal" tabindex="0" role="region" aria-label="${U('gal','Gallery')}">${p.gal.map((g,i)=>`<img src="assets/${g}.jpg" alt="${p.title} ${i+1}" loading="lazy">`).join('')}</div>`:''}
+  ${p.icons?`<h4>${U('icons','The icon set')}</h4><div class="icons">${p.icons.map(g=>`<div><img src="assets/ltt/${g}.png" alt="" loading="lazy"></div>`).join('')}</div>`:''}
+  <h4>${U('tl','Timeline')}</h4><div class="tl">${PH(p,'story').map(s=>`<span>${s}</span>`).join('')}</div>
+  <p class="note">${PH(p,'note')}</p>`;
+ let i=0;const sp=[...document.querySelectorAll('#loop span')];
+ clearInterval(loopTimer);loopTimer=setInterval(()=>{sp.forEach((s,k)=>s.classList.toggle('hot',k===i%sp.length));i++},700);
+}
+function open(id){lastBtn=document.activeElement;fillDialog(id);dlg.showModal();dlg.scrollTop=0}
+document.addEventListener('click',e=>{const c=e.target.closest('.cart');if(c)open(c.dataset.id)});
+$('#close').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+dlg.addEventListener('close',()=>{clearInterval(loopTimer);lastBtn&&lastBtn.focus()});
+
+/* ---------- motion ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+setTimeout(()=>{document.querySelectorAll('.st .bar b').forEach(b=>b.style.width=b.dataset.w+'%');barsOn=true},300);
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,n=+el.dataset.n,t0=performance.now();
+ (function f(t){const k=Math.min(1,(t-t0)/1000);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);else if(el.dataset.plus)el.textContent=n+'+'})(t0)}),{threshold:.6});
+document.querySelectorAll('[data-n]').forEach(el=>cio.observe(el));
+/* xp + active nav */
+const links=[...document.querySelectorAll('.hud nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{const h=document.documentElement,p=Math.min(100,Math.round(scrollY/(h.scrollHeight-innerHeight)*100));$('#xp').style.width=p+'%';$('#xpn').textContent=p+'%';
+ let i=-1;secs.forEach((s,k)=>{if(s.getBoundingClientRect().top<innerHeight*.4)i=k});links.forEach((a,k)=>a.classList.toggle('on',k===i))},{passive:true});
+/* tilt */
+const idc=$('#idc');
+if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+ idc.parentElement.addEventListener('mousemove',e=>{const r=idc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;idc.style.transform=`rotateY(${x*14}deg) rotateX(${-y*14}deg)`;idc.style.setProperty('--gx',(x*160)+'%')});
+ idc.parentElement.addEventListener('mouseleave',()=>{idc.style.transform='';idc.style.setProperty('--gx','-120%')});
+}
+/* contact */
+$('#f').addEventListener('submit',e=>{e.preventDefault();const b=encodeURIComponent($('#m').value+"\n\n— "+$('#n').value+" ("+$('#e').value+")");location.href="mailto:ido.siloni@gmail.com?subject="+encodeURIComponent("Hello from your site")+"&body="+b});
+
+/* ---------- language toggle ---------- */
+const SKIP='#stats,#tick,#inv,#shelf,#dlg,script,style,#lang,.xp';
+const INL=new Set(['BR','B','MARK','I','EM']);
+const norm=x=>x.replace(/\s+/g,' ').trim();
+const regs=[],missing=new Set();
+(function collect(){
+ const done=new Set();
+ document.body.querySelectorAll('*').forEach(el=>{
+  if(el.closest(SKIP)||el.closest('svg')||el.tagName==='svg')return;
+  if([...done].some(d=>d.contains(el)))return;
+  const kids=[...el.children];
+  if(kids.every(k=>INL.has(k.tagName))){const key=norm(el.innerHTML);if(key&&/[A-Za-z]{2}|→/.test(key)){regs.push({el,key,type:'html',orig:el.innerHTML});done.add(el)}}
+  else el.childNodes.forEach(n=>{if(n.nodeType===3){const key=norm(n.nodeValue);if(key&&/[A-Za-z]{2}|→/.test(key))regs.push({node:n,key,type:'text',orig:n.nodeValue})}});
+ });
+ document.body.querySelectorAll('[placeholder],[aria-label],[alt]').forEach(el=>{
+  if(el.closest(SKIP)||el.id==='lang')return;
+  ['placeholder','aria-label','alt'].forEach(a=>{const v=el.getAttribute(a);if(v)regs.push({el,attr:a,key:v,type:'attr',orig:v})});
+ });
+})();
+const TITLE=document.title,DESC=document.querySelector('meta[name=description]').content;
+function applyStatic(){
+ regs.forEach(r=>{const h=rtl()?HE[r.key]:null;if(rtl()&&!h)missing.add(r.key);
+  if(!h&&!r.on)return;const v=h||r.orig;r.on=!!h;
+  if(r.type==='html')r.el.innerHTML=v;else if(r.type==='text')r.node.nodeValue=h?(r.orig.match(/^\s*/)[0]+h+r.orig.match(/\s*$/)[0]):r.orig;else r.el.setAttribute(r.attr,v)});
+ document.title=rtl()?(HE.__title||TITLE):TITLE;
+ document.querySelector('meta[name=description]').content=rtl()?(HE.__desc||DESC):DESC;
+ const b=$('#lang');b.textContent=rtl()?'English':'עברית';b.lang=rtl()?'en':'he';b.setAttribute('aria-label',rtl()?'החלפה לאנגלית':'Switch language to Hebrew');
+ window.__missing=[...missing];
+}
+function setLang(l){lang=l;document.documentElement.lang=l;document.documentElement.dir=l==='he'?'rtl':'ltr';applyStatic();renderBuilt();if(dlg.open)fillDialog(curId);try{localStorage.setItem('lang',l)}catch(e){}}
+$('#lang').onclick=()=>setLang(rtl()?'en':'he');
+(function(){let l=null;try{l=localStorage.getItem('lang')}catch(e){}
+ if(!l)l=(navigator.language||'').toLowerCase().startsWith('he')?'he':'en';
+ if(l==='he')setLang('he')})();
+</script>
+</body>
+</html>
