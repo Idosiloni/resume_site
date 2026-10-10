@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ido Siloni — Player One</title>
 <meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a realtime family app, a free chess coach, and a lot of lessons.">
+<link rel="canonical" href="https://ido-siloni.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ido Siloni — Player One">
+<meta property="og:description" content="Former Air Force shift manager, now building Roblox games and web apps with AI as co-pilot. Pick a cartridge.">
+<meta property="og:url" content="https://ido-siloni.vercel.app/">
+<meta property="og:image" content="https://ido-siloni.vercel.app/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ido-siloni.vercel.app/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5a36'/%3E%3Ctext x='7' y='23' font-family='sans-serif' font-size='17' font-weight='800' fill='%231b1633'%3EIS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Heebo:wght@500;700;800&display=swap">
@@ -199,6 +208,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
 .cstats span{font:500 12px "DM Mono",Heebo,monospace}
 .gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 16px}
 .gal.ph img{height:440px}
+.live{margin:0 0 16px}.live .btn{padding:10px 18px;font-size:16px}
 .gal img{height:240px;width:auto;border:var(--bd);border-radius:16px;scroll-snap-align:start;box-shadow:4px 4px 0 var(--ink);flex:none;background:#fff}
 .icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:10px}
 .icons div{background:linear-gradient(135deg,#2b1a5e,#7a34c8);border:var(--bd);border-radius:14px;aspect-ratio:1;display:grid;place-items:center}
@@ -235,7 +245,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
     <div class="pl"><span>PLAYER 1</span><span>LVL 23</span><span>Hod HaSharon, IL</span></div>
     <h1>Ido<br>Siloni<span class="u" aria-hidden="true"><svg viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M2 10 C 50 2, 100 14, 150 8 S 250 4, 298 9" fill="none" stroke="#ff5a36" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
     <p class="sub">Former Air Force <b>shift manager</b>. Now I build <b>games and apps</b> with AI as my co-pilot.</p>
-    <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a></div>
+    <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a><a class="btn alt" href="Ido-Siloni-CV.pdf" download>Download CV ↓</a></div>
   </div>
   <div class="card3d"><div class="idc" id="idc">
     <div class="top"><span>PLAYER CARD</span><b>CLASS: BUILDER</b></div>
@@ -359,6 +369,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
       <h2>Let's make<br>something.</h2>
       <p style="font-size:19px;max-width:380px">Hiring, collaborating, or got a strange idea for a game? I'd love to hear it.</p>
       <a class="mail" href="mailto:ido.siloni@gmail.com">ido.siloni@gmail.com</a>
+      <p style="margin-top:14px"><a href="Ido-Siloni-CV.pdf" download style="font-weight:700">Download my CV (PDF) ↓</a></p>
     </div>
     <form id="f">
       <input id="n" placeholder="Name" required aria-label="Name">
@@ -409,21 +420,22 @@ const PROJ=[
  loop:["ROLL","EARN + TRAIN","POWER UP","DRAFT 3","DUEL","STEAL"],
  built:["4 style families that double as a type chart (×1.5 advantage)","5 rarities with odds shown on the machine, and a visible pity counter","3v3 best-of-three auto-fights with simultaneous blind picks","Brackets by team power, a rookie shield, and a rescue-raid second chance","Steal walk across a shared plaza with a server-wide announce feed","Rebirth, mutations and a PvE gauntlet","A store that never double-charges or double-grants, thanks to idempotent purchase receipts"],
  rules:[["01","Combat is deterministic. Staking items on a chance result would be wagering, and kids trust what they can predict."],["02","One progression system only. I cut the others after learning from the tycoon."],["03","No trading. Trading plus stealing is a scam surface a solo developer can't moderate."],["04","Never sell battle advantage or steal protection."],["05","Odds are honest and always shown."],["06","Every feature sits behind a config flag, and anything touching money or randomness gets a written policy check first."]],
- stats:[["850+","numbered design decisions"],["~100","design & balance docs"],["8,200+","automated checks passing"],["34","bugs found in one audit"]],
+ stats:[["850+","numbered design decisions"],["~100","design & balance docs"],["10,000+","automated checks passing"],["34","bugs found in one audit"]],
  gal:["fts-1","fts-2","fts-3","fts-4","fts-5","fts-6"],
- story:["Jul 27 · concept written","Aug · milestones locked","Sep 23 · full audit","Sep 27 · relaunch","Sep 30 · pivot to an egg-based version, driven by real player data"],
+ story:["Jul 27 · concept written","Aug · milestones locked","Sep 23 · full audit","Sep 27 · relaunch","Sep 30 · pivot to an egg-based version, driven by real player data","Oct 1–2 · animals, lands and a cleanup release (decisions D850–D853)"],
  note:"Key art generated with AI tools, then used for the game's thumbnails."},
 {id:"ltt",kick:"ROBLOX · 2026",plat:"Roblox",title:"Lucky Ticket Tycoon",short:"Scratch tickets by hand, hire scratch-bots, rebirth for permanent multipliers.",
  art:'<img class="ic" style="left:9%;top:12%" src="assets/ltt/crown.png" alt=""><img class="ic" style="right:11%;top:10%;animation-delay:-1s" src="assets/ltt/gem_purple.png" alt=""><img class="ic" style="left:40%;top:34%;width:104px;animation-delay:-2s" src="assets/ltt/chest.png" alt=""><img class="ic" style="left:12%;bottom:10%;animation-delay:-3s" src="assets/ltt/clover.png" alt=""><img class="ic" style="right:14%;bottom:12%;animation-delay:-4s" src="assets/ltt/coin_stack.png" alt="">',artc:"ltt",cc:"#fffaf0",
  pitch:"Two pulls working together: the tactile thrill of scratching a ticket, and the empire-building snowball of a Roblox tycoon.",
  tags:["Roblox","Tycoon","Systems design","Server-authoritative"],
  loop:["SCRATCH","EARN","UPGRADE / AUTOMATE","EXPAND","REBIRTH"],
- built:["Drag-to-reveal ticket interface, with trap symbols","11 ticket tiers from a street kiosk to a mega emporium","Scratch-bots that earn while you're away","Two currencies: cash and prestige tokens","11 server services: data, tickets, economy, upgrades, automation, plot, rebirth, tutorial, monetization, leaderboard and engagement","An 8-phase upgrade plan, including 7 new card types like push-your-luck and memory pairs"],
+ built:["Drag-to-reveal ticket interface, with trap symbols","20 themed kiosks in 5 levels, from a street stand up to a mega emporium","Scratch-bots that earn while you're away","Two currencies: cash and prestige tokens","About 15 server services: data, tickets, economy, upgrades, automation, plot, rebirth, tutorial, monetization, leaderboard, engagement and more","Card types reworked after outside reviews, then consolidated from six archetypes to three (match, per-symbol and a bonus box)","A math-verification gate before every publish: a payout-rate soak across all 20 kiosks has to show zero failures"],
  rules:[["01","Retention first, revenue second. A game people return to daily earns more than one built to extract."],["02","The server owns cash, odds and payouts. The client never decides a result."],["03","Idle income stays below active play, so scratching always feels worth it."],["04","Fake currency only, no paid random rewards, and never pay-gate progression."],["05","Two outside AI reviews flagged the same risk: every card playing the same. That became the upgrade plan."]],
- stats:[["11","ticket tiers"],["11","server services"],["36","custom symbol icons"],["7","new card archetypes planned"]],
+ stats:[["20","themed kiosks"],["~15","server services"],["36","custom symbol icons"],["v0.8.1","live update, Jul 31"]],
+ gal:["ltt-1","ltt-2","ltt-3"],
  icons:["cherry","seven","diamond_blue","gem_purple","crown","trophy","rocket","star","medal","heart","moneybag","sparkle_bonus","lemon","bell","clover","coin_stack"],
- story:["Jun 21 · repo created","Design brief + working rules written","Upgrade plan drafted from outside reviews"],
- note:"Symbol set shown below is the game's real icon set."},
+ story:["Jun 21 · repo created","Design brief + working rules written","Jun 25 · card rework drafted from outside reviews","Jul 7 · v0.5.0 game summary","Jul 29 · v0.6.0 \"Big Opening Update\"","Jul 31 · v0.8.1 published"],
+ note:"Screenshots are from the game running in Roblox. The symbol set at the end is the game's real icon set."},
 {id:"stf",kick:"ROBLOX · 2026",plat:"Roblox",title:"+1 Spin to Fly",short:"Spin on a gymnastics bar, let go, and fly. Twenty shoes, twenty tricks, ten zones.",
  art:'<div class="cl" style="top:18%;width:90px"></div><div class="cl" style="top:62%;width:130px;animation-delay:-6s"></div><div class="big">+1</div>',artc:"stf",cc:"#fffaf0",
  pitch:"Spin on a high bar, let go, and fly down a road through ten zones. The next game after Fight To Steal, built on its lessons: every server number lives in config, and nothing the client sends can reach a player's save.",
@@ -437,6 +449,7 @@ const PROJ=[
  note:"Screenshots are from the game running in Studio."},
 {id:"fam",kick:"WEB APP · SEP 2026",plat:"Web",title:"Family Cart",short:"A shared shopping list that syncs live and sorts itself in store-walking order.",
  art:'<div class="mini"><h4><span>העגלה המשפחתית</span><span>🛒</span></h4><div class="r"><i></i>עגבניות<span class="sec">ירקות</span></div><div class="r"><i></i>חלב<span class="sec">חלב</span></div><div class="r d"><i></i>לחם<span class="sec">מאפים</span></div><div class="r"><i></i>שוקולד<span class="sec">חטיפים</span></div></div>',artc:"fam",cc:"#fffaf0",
+ link:"https://family-cart-cf2cf.web.app",
  pitch:"No login, no accounts. One long random link is the cart, and everyone in the family sees changes the second they happen.",
  tags:["JavaScript","Firebase","Firestore","PWA","Hebrew UI"],
  loop:["ADD ITEM","AUTO-SORTED","WALK THE STORE","CHECK OFF","LIVE SYNC"],
@@ -448,6 +461,7 @@ const PROJ=[
  note:"Hebrew-first interface. Screenshots show a demo cart, not a real family's list."},
 {id:"chess",kick:"WEB APP · OCT 2026",plat:"Web",title:"Chess Coach",short:"A free game review that teaches. The engine runs in your browser, so there is nothing to pay for.",
  art:'<div class="cb"><img src="assets/chess/bQ.svg" alt="" style="left:6%;top:14%"><img src="assets/chess/wK.svg" alt="" style="right:8%;top:10%;animation-delay:-1.5s"><img src="assets/chess/wN.svg" alt="" style="left:38%;top:32%;width:104px;animation-delay:-3s"><img src="assets/chess/bR.svg" alt="" style="left:10%;bottom:8%;animation-delay:-2s"><img src="assets/chess/wP.svg" alt="" style="right:14%;bottom:10%;animation-delay:-4s"></div>',artc:"chess",cc:"#fffaf0",
+ link:"https://chessido.netlify.app",
  pitch:"Load your recent chess.com games and get more than a list of blunders: three lessons per game, drills where you find the better move, and a view of what to work on across all of them.",
  tags:["JavaScript","Stockfish (WASM)","chess.js","No backend"],
  loop:["LOAD GAMES","ENGINE REVIEW","3 KEY LESSONS","FIND THE MOVE","TRACK PROGRESS"],
@@ -479,6 +493,7 @@ function fillDialog(id){
  const rules=PH(p,'rulesT'),stats=PH(p,'statsT');
  $('#cs').innerHTML=`
   <h3 id="dlgTitle">${p.title}</h3><p class="pitch">${PH(p,'pitch')}</p>
+  ${p.link?`<p class="live"><a class="btn" href="${p.link}" target="_blank" rel="noopener">${U('live','Try it live')} ↗</a></p>`:''}
   <div class="tags">${PH(p,'tags').map(t=>`<span>${t}</span>`).join('')}</div>
   <h4>${U('loop','The core loop')}</h4><div class="loop" id="loop">${L(PH(p,'loop'))}</div>
   <h4>${U('nums','By the numbers')}</h4><div class="cstats">${p.stats.map((s,i)=>`<div style="--cc:${['#b6f23c','#62c8ff','#ff8fc7','#ffd24a'][i%4]}"><b>${s[0]}</b><span>${stats?stats[i]:s[1]}</span></div>`).join('')}</div>
