@@ -231,6 +231,31 @@ html[dir=rtl] #achp{direction:rtl}
 #toast{position:fixed;left:50%;bottom:70px;transform:translate(-50%,30px);opacity:0;z-index:60;background:var(--ink);color:var(--paper);border:3px solid var(--lime);border-radius:14px;padding:10px 18px;font:700 15px "Bricolage Grotesque",Heebo,sans-serif;transition:.35s;pointer-events:none;text-align:center;max-width:calc(100vw - 28px)}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 @media(prefers-reduced-motion:reduce){.gx .bar.grow{animation:none}#toast{transition:none}}
+#reel{border:var(--bd);border-radius:22px;padding:0;background:var(--ink);color:var(--ink);width:min(960px,calc(100vw - 24px));box-shadow:8px 8px 0 rgba(0,0,0,.35);overflow:hidden}
+#reel::backdrop{background:rgba(27,22,51,.72)}
+#rStage{position:relative;aspect-ratio:16/9;min-height:300px;background:var(--rc,#fff3da);display:flex;flex-direction:column;justify-content:center;padding:clamp(20px,5vw,64px);overflow:hidden;transition:background .5s}
+#rStage .k{font:500 clamp(12px,1.6vw,16px) "DM Mono",Heebo,monospace;letter-spacing:.12em;background:var(--ink);color:var(--paper);align-self:flex-start;padding:5px 12px;border-radius:8px;animation:rin .5s both}
+#rStage .t{font-weight:800;font-size:clamp(34px,7.6vw,92px);line-height:.95;letter-spacing:-.04em;margin:14px 0 10px;animation:rin .6s .1s both;text-wrap:balance}
+#rStage .l{font-size:clamp(15px,2.4vw,26px);max-width:34ch;line-height:1.3;animation:rin .6s .25s both}
+#rStage .s{display:flex;gap:clamp(10px,2.4vw,28px);margin-top:clamp(14px,3vw,34px);flex-wrap:wrap}
+#rStage .s div{background:var(--paper);border:var(--bd);border-radius:14px;padding:8px 14px;box-shadow:4px 4px 0 var(--ink);animation:rpop .5s both}
+#rStage .s div:nth-child(1){animation-delay:.5s}#rStage .s div:nth-child(2){animation-delay:.7s}#rStage .s div:nth-child(3){animation-delay:.9s}
+#rStage .s b{display:block;font-size:clamp(22px,4vw,44px);line-height:1;direction:ltr;unicode-bidi:isolate}
+#rStage .s span{font-size:clamp(11px,1.5vw,15px);color:var(--mut)}
+@keyframes rin{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes rpop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+#rBar{display:flex;gap:4px;padding:10px 12px 0;background:var(--ink)}
+#rBar b{flex:1;height:5px;border-radius:9px;background:rgba(255,243,218,.25);overflow:hidden}
+#rBar b i{display:block;height:100%;width:0;background:var(--lime)}
+#rBar b.done i{width:100%}
+#rBar b.cur i{animation:rfill var(--rd,4.2s) linear forwards}
+#rBar.paused b.cur i{animation-play-state:paused}
+@keyframes rfill{to{width:100%}}
+#rCtl{display:flex;gap:10px;align-items:center;padding:10px 12px 12px;background:var(--ink)}
+#rCtl button{font:700 15px "Bricolage Grotesque",Heebo,sans-serif;background:var(--paper);color:var(--ink);border:3px solid var(--paper);border-radius:10px;padding:6px 14px;cursor:pointer}
+#rCtl button:hover{background:var(--lime)}
+#rCtl .sp{flex:1}
+@media(prefers-reduced-motion:reduce){#rStage *{animation:none!important}#rBar b.cur i{animation:none;width:100%}}
 .live{margin:0 0 16px}.live .btn{padding:10px 18px;font-size:16px}
 .gal img{height:240px;width:auto;border:var(--bd);border-radius:16px;scroll-snap-align:start;box-shadow:4px 4px 0 var(--ink);flex:none;background:#fff}
 .icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:10px}
@@ -268,7 +293,7 @@ html[dir=rtl] #achp{direction:rtl}
     <div class="pl"><span>PLAYER 1</span><span>LVL 23</span><span>Hod HaSharon, IL</span></div>
     <h1>Ido<br>Siloni<span class="u" aria-hidden="true"><svg viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M2 10 C 50 2, 100 14, 150 8 S 250 4, 298 9" fill="none" stroke="#ff5a36" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
     <p class="sub">Former Air Force <b>shift manager</b>. Now I build <b>games and apps</b> with AI as my co-pilot.</p>
-    <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a><a class="btn alt" href="Ido-Siloni-CV.pdf" download>Download CV ↓</a></div>
+    <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a><a class="btn alt" href="Ido-Siloni-CV.pdf" download>Download CV ↓</a><button class="btn alt" id="reelBtn" type="button">▶ Watch the reel</button></div>
   </div>
   <div class="card3d"><div class="idc" id="idc">
     <div class="top"><span>PLAYER CARD</span><b>CLASS: BUILDER</b></div>
@@ -404,7 +429,8 @@ html[dir=rtl] #achp{direction:rtl}
   </div>
 </div></section>
 </main>
-<button id="ach" type="button" aria-expanded="false" aria-controls="achp"></button><div id="achp" hidden></div><div id="toast" role="status" aria-live="polite"></div>
+<button id="ach" type="button" aria-expanded="false" aria-controls="achp"></button><div id="achp" hidden></div><dialog id="reel" aria-label="Intro reel"><div id="rBar" aria-hidden="true"></div><div id="rStage" aria-live="off"></div><div id="rCtl"><button type="button" id="rPrev" aria-label="Previous">◀</button><button type="button" id="rPlay">❚❚</button><button type="button" id="rNext" aria-label="Next">▶</button><span class="sp"></span><button type="button" id="rClose">✕</button></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
 <footer>© 2026 Ido Siloni · built with Claude Code</footer>
 
 <dialog id="dlg" aria-labelledby="dlgTitle">
@@ -573,7 +599,7 @@ if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matche
 $('#f').addEventListener('submit',e=>{e.preventDefault();const b=encodeURIComponent($('#m').value+"\n\n— "+$('#n').value+" ("+$('#e').value+")");location.href="mailto:ido.siloni@gmail.com?subject="+encodeURIComponent("Hello from your site")+"&body="+b});
 
 /* ---------- achievements ---------- */
-const ACH=[["open","Cartridge collector","Open a case study","אספן קלטות","פתחו מקרה בוחן"],["all","Completionist","Open all five case studies","השלמה מלאה","פתחו את כל חמשת מקרי הבוחן"],["lang","Polyglot","Switch the language","פוליגלוט","החליפו שפה"],["end","Reached the end","Scroll to 100% page XP","הגעתם לסוף","גללו עד 100%"],["cv","Recruiter's pick","Download the CV","בחירת המגייס","הורידו את קורות החיים"],["secret","Cheat code","Find the secret (hint: ↑↑↓↓←→←→BA)","קוד רמאות","מצאו את הסוד (רמז: ↑↑↓↓←→←→BA)"]];
+const ACH=[["open","Cartridge collector","Open a case study","אספן קלטות","פתחו מקרה בוחן"],["all","Completionist","Open all five case studies","השלמה מלאה","פתחו את כל חמשת מקרי הבוחן"],["lang","Polyglot","Switch the language","פוליגלוט","החליפו שפה"],["end","Reached the end","Scroll to 100% page XP","הגעתם לסוף","גללו עד 100%"],["cv","Recruiter's pick","Download the CV","בחירת המגייס","הורידו את קורות החיים"],["reel","Director's cut","Watch the reel to the end","הבימאי","צפו בסרטון עד הסוף"],["secret","Cheat code","Find the secret (hint: ↑↑↓↓←→←→BA)","קוד רמאות","מצאו את הסוד (רמז: ↑↑↓↓←→←→BA)"]];
 let got={},seen=new Set(),booted=false;
 try{got=JSON.parse(localStorage.getItem('ach')||'{}')||{}}catch(e){got={}}
 const achBtn=$('#ach'),achPanel=$('#achp'),toast=$('#toast');let toastT;
@@ -588,8 +614,38 @@ addEventListener('scroll',()=>{const h=document.documentElement;if(scrollY>=h.sc
 const KON=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];let kp=0;
 document.addEventListener('keydown',e=>{const k=e.key.length===1?e.key.toLowerCase():e.key;kp=k===KON[kp]?kp+1:(k===KON[0]?1:0);if(kp===KON.length){kp=0;ach('secret');document.body.animate([{filter:'hue-rotate(0)'},{filter:'hue-rotate(360deg)'}],{duration:1600})}});
 achDraw();
+/* ---------- reel ---------- */
+const reel=$('#reel'),rStage=$('#rStage'),rBar=$('#rBar'),rPlay=$('#rPlay');
+const RCOL={ltt:'#ff8fc7',fts:'#ffd24a',fam:'#62c8ff',stf:'#b6f23c',chess:'#ff5a36'};
+const RH={intro:'מאחראי משמרת לבונה משחקים ואפליקציות',outro:'בואו נבנה משהו.',ctl:['הקודם','הבא','סגור','נגן','השהה'],label:'סרטון היכרות'};
+const RMS=4200;let ri=0,rt=null,rOn=true,rs=[];
+function reelScenes(){
+ const order=['ltt','fts','fam','stf','chess'];
+ return [{c:'#fff3da',k:'PLAYER 1',t:T('Ido Siloni','עידו סילוני'),l:T('Shift manager → game & app builder',RH.intro)},
+  ...order.map(id=>{const p=PROJ.find(x=>x.id===id),st=PH(p,'statsT');return {c:RCOL[id],k:PH(p,'kick'),t:p.title,l:PH(p,'short'),s:p.stats.slice(0,3).map((s,i)=>[s[0],st?st[i]:s[1]])}}),
+  {c:'#8b5cf6',k:T('CONTINUE?','להמשיך?'),t:T("Let's make something.",RH.outro),l:'ido.siloni@gmail.com'}];
+}
+function reelShow(i){
+ clearTimeout(rt);ri=(i+rs.length)%rs.length;const s=rs[ri];
+ rStage.style.setProperty('--rc',s.c);
+ rStage.innerHTML=`<div class="k">${s.k}</div><div class="t">${s.t}</div><div class="l">${s.l}</div>`+(s.s?`<div class="s">${s.s.map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}</div>`:'');
+ rBar.innerHTML=rs.map((_,k)=>`<b class="${k<ri?'done':k===ri?'cur':''}"><i></i></b>`).join('');rBar.classList.toggle('paused',!rOn);
+ rBar.style.setProperty('--rd',(RMS/1000)+'s');
+ if(ri===rs.length-1)ach('reel');
+ if(rOn&&ri<rs.length-1)rt=setTimeout(()=>reelShow(ri+1),RMS);
+ else if(rOn&&ri===rs.length-1){rOn=false;rBar.classList.add('paused');rPlay.textContent='▶'}
+}
+function reelLabels(){reel.setAttribute('aria-label',T('Intro reel',RH.label));$('#rPrev').setAttribute('aria-label',T('Previous',RH.ctl[0]));$('#rNext').setAttribute('aria-label',T('Next',RH.ctl[1]));$('#rClose').setAttribute('aria-label',T('Close',RH.ctl[2]));rPlay.setAttribute('aria-label',rOn?T('Pause',RH.ctl[4]):T('Play',RH.ctl[3]))}
+function reelOpen(){rs=reelScenes();rOn=!matchMedia('(prefers-reduced-motion:reduce)').matches;rPlay.textContent=rOn?'❚❚':'▶';reelLabels();reel.showModal();reelShow(0)}
+$('#reelBtn').onclick=reelOpen;
+$('#rClose').onclick=()=>reel.close();
+$('#rNext').onclick=()=>reelShow(ri+1);$('#rPrev').onclick=()=>reelShow(ri-1);
+rPlay.onclick=()=>{rOn=!rOn;rPlay.textContent=rOn?'❚❚':'▶';reelLabels();if(rOn)reelShow(ri===rs.length-1?0:ri);else{clearTimeout(rt);rBar.classList.add('paused')}};
+reel.addEventListener('close',()=>{clearTimeout(rt)});
+reel.addEventListener('click',e=>{if(e.target===reel)reel.close()});
+reel.addEventListener('keydown',e=>{if(e.key==='ArrowRight')reelShow(ri+1);if(e.key==='ArrowLeft')reelShow(ri-1)});
 /* ---------- language toggle ---------- */
-const SKIP='#stats,#tick,#inv,#shelf,#season,#ach,#achp,#toast,#dlg,script,style,#lang,.xp';
+const SKIP='#stats,#tick,#inv,#shelf,#season,#ach,#achp,#toast,#dlg,#reel,script,style,#lang,.xp';
 const INL=new Set(['BR','B','MARK','I','EM']);
 const norm=x=>x.replace(/\s+/g,' ').trim();
 const regs=[],missing=new Set();

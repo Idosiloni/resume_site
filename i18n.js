@@ -15,6 +15,7 @@ window.HE={
 "▶ Press start": "◀ התחילו",
 "Say hi": "דברו איתי",
 "Download CV ↓": "הורדת קורות חיים ↓",
+"▶ Watch the reel": "▶ צפו בסרטון",
 "Download my CV (PDF) ↓": "הורדת קורות החיים שלי (PDF) ↓",
 "PLAYER CARD": "כרטיס שחקן",
 "CLASS: BUILDER": "מקצוע: בונה",
