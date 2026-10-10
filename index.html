@@ -198,6 +198,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
 .cstats b{display:block;font-size:38px;letter-spacing:-.05em;line-height:1;font-weight:800}
 .cstats span{font:500 12px "DM Mono",Heebo,monospace}
 .gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 16px}
+.gal.ph img{height:440px}
 .gal img{height:240px;width:auto;border:var(--bd);border-radius:16px;scroll-snap-align:start;box-shadow:4px 4px 0 var(--ink);flex:none;background:#fff}
 .icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:10px}
 .icons div{background:linear-gradient(135deg,#2b1a5e,#7a34c8);border:var(--bd);border-radius:14px;aspect-ratio:1;display:grid;place-items:center}
@@ -443,7 +444,8 @@ const PROJ=[
  rules:[["01","The secret is the link: a 16+ character random id, and carts can't be listed."],["02","Database rules whitelist every field, with type and size limits."],["03","Items are rendered as text, never HTML."],["04","Brand names only decide the aisle when no product word matched, so \"Elite coffee\" stays coffee."]],
  stats:[["1,583","lines of code, no framework"],["12","store sections"],["~950","product & brand words"],["14","commits, all in one day"]],
  story:["Sep 30 · shared cart","Same day · Firebase, sorting, installable app","Same day · voice, WhatsApp import, 3 redesigns","Next: price comparison from Israeli chains' public price files"],
- note:"Hebrew-first interface."},
+ gal:["fam-1","fam-2","fam-3","fam-4","fam-5"],galph:1,
+ note:"Hebrew-first interface. Screenshots show a demo cart, not a real family's list."},
 {id:"chess",kick:"WEB APP · OCT 2026",plat:"Web",title:"Chess Coach",short:"A free game review that teaches. The engine runs in your browser, so there is nothing to pay for.",
  art:'<div class="cb"><img src="assets/chess/bQ.svg" alt="" style="left:6%;top:14%"><img src="assets/chess/wK.svg" alt="" style="right:8%;top:10%;animation-delay:-1.5s"><img src="assets/chess/wN.svg" alt="" style="left:38%;top:32%;width:104px;animation-delay:-3s"><img src="assets/chess/bR.svg" alt="" style="left:10%;bottom:8%;animation-delay:-2s"><img src="assets/chess/wP.svg" alt="" style="right:14%;bottom:10%;animation-delay:-4s"></div>',artc:"chess",cc:"#fffaf0",
  pitch:"Load your recent chess.com games and get more than a list of blunders: three lessons per game, drills where you find the better move, and a view of what to work on across all of them.",
@@ -484,7 +486,7 @@ function fillDialog(id){
     <div><h4>${U('built','What I built')}</h4><ul>${PH(p,'built').map(x=>`<li>${x}</li>`).join('')}</ul></div>
     <div><h4>${U('rules','Rules I set')}</h4><div class="rules">${p.rules.map((r,i)=>`<div class="rule"><b>${r[0]}</b><div>${rules?rules[i]:r[1]}</div></div>`).join('')}</div></div>
   </div>
-  ${p.gal?`<h4>${U('gal','Gallery')}</h4><div class="gal" tabindex="0" role="region" aria-label="${U('gal','Gallery')}">${p.gal.map((g,i)=>`<img src="assets/${g}.jpg" alt="${p.title} ${i+1}" loading="lazy">`).join('')}</div>`:''}
+  ${p.gal?`<h4>${U('gal','Gallery')}</h4><div class="gal${p.galph?' ph':''}" tabindex="0" role="region" aria-label="${U('gal','Gallery')}">${p.gal.map((g,i)=>`<img src="assets/${g}.jpg" alt="${p.title} ${i+1}" loading="lazy">`).join('')}</div>`:''}
   ${p.icons?`<h4>${U('icons','The icon set')}</h4><div class="icons">${p.icons.map(g=>`<div><img src="assets/ltt/${g}.png" alt="" loading="lazy"></div>`).join('')}</div>`:''}
   <h4>${U('tl','Timeline')}</h4><div class="tl">${PH(p,'story').map(s=>`<span>${s}</span>`).join('')}</div>
   <p class="note">${PH(p,'note')}</p>`;
