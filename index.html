@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ido Siloni — Player One</title>
-<meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a realtime family app, and a lot of lessons.">
+<meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a realtime family app, a free chess coach, and a lot of lessons.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5a36'/%3E%3Ctext x='7' y='23' font-family='sans-serif' font-size='17' font-weight='800' fill='%231b1633'%3EIS%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&family=Heebo:wght@500;700;800&display=swap">
@@ -110,6 +110,9 @@ html[dir=rtl] .cart:hover .go i{transform:translateX(-5px)}
 .art.stf .big{font-size:120px;font-weight:800;letter-spacing:-.06em;color:var(--ink);-webkit-text-stroke:0;text-shadow:5px 5px 0 var(--lime);position:relative;z-index:1}
 .art.stf .cl{position:absolute;background:#fff;border:3px solid var(--ink);border-radius:99px;height:34px;animation:drift 14s linear infinite}
 @keyframes drift{from{transform:translateX(-140px)}to{transform:translateX(560px)}}
+.art.chess{background:repeating-conic-gradient(#b58863 0 25%,#f0d9b5 0 50%) 0 0/60px 60px}
+.art.chess .cb{position:absolute;inset:0}
+.art.chess img{position:absolute;width:82px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.4));animation:fl 5s ease-in-out infinite}
 .art.fam{background:#f4efe6}
 .mini{background:#fff;border:3px solid var(--ink);border-radius:18px;width:min(250px,76%);padding:14px 16px;direction:rtl;text-align:right;font:700 14px Heebo,sans-serif;box-shadow:4px 4px 0 var(--ink)}
 .mini h4{font:800 16px Heebo;margin-bottom:6px;display:flex;justify-content:space-between}
@@ -248,12 +251,12 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
     <div class="kick">// 01 player</div>
     <h2>Calm under<br>pressure.</h2>
     <p>For <mark>more than three years</mark> I managed shifts in an Air Force communications unit: round-the-clock coverage, several teams at once, and soldiers who counted on me. I learned to decide fast without losing sight of the big picture.</p>
-    <p>I studied <mark>cyber and computer science</mark> in high school. Now I combine that with AI tools to build things. On my own, I've made <mark>three Roblox games and a realtime family shopping app.</mark></p>
+    <p>I studied <mark>cyber and computer science</mark> in high school. Now I combine that with AI tools to build things. On my own, I've made <mark>three Roblox games, a realtime family shopping app and a free chess coach.</mark></p>
     <p>I learn by building. Roblox Studio, Luau, Firebase, Vercel and more: I picked up each one by using it on a real project. Hand me a new tool and I'll be productive with it fast.</p>
     <p style="font-size:17px;color:var(--mut)">Native Hebrew, fluent English. Off the clock: volleyball, CrossFit, basketball, and a lot of gaming.</p>
   </div>
   <div class="nums reveal">
-    <div class="num"><b data-n="4">0</b><span>projects built</span></div>
+    <div class="num"><b data-n="5">0</b><span>projects built</span></div>
     <div class="num"><b>3+</b><span>years of 24/7 shift work</span></div>
     <div class="num"><b data-n="850" data-plus="1">0</b><span>design decisions logged for Fight To Steal</span></div>
     <div class="num"><b data-n="14">0</b><span>commits in a single day on Family Cart</span></div>
@@ -263,7 +266,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
 <section id="work"><div class="wrap">
   <div class="reveal"><div class="kick">// 02 games &amp; apps</div>
   <h2>Pick a cartridge.</h2>
-  <p class="lead">Four projects I built start to finish. Open one for the full story: the core loop, the rules I set for myself, and the numbers.</p></div>
+  <p class="lead">Five projects I built start to finish. Open one for the full story: the core loop, the rules I set for myself, and the numbers.</p></div>
   <div class="shelf" id="shelf"></div>
 </div></section>
 
@@ -337,7 +340,7 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
         <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="Builder badge"><circle cx="40" cy="40" r="34" fill="#ff5a36" stroke="#1b1633" stroke-width="4"/><path d="M24 30l-10 10 10 10M56 30l10 10-10 10M45 22l-10 36" fill="none" stroke="#fff3da" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div><h3>Builder</h3><div class="org">Games &amp; apps, with AI as co-pilot</div></div>
       </div>
-      <ul><li>Three Roblox games and a realtime web app, with design docs, balance simulations and automated tests behind the games.</li><li>Learned the unglamorous parts of game development: economy balancing, anti-exploit checks and player analytics.</li></ul>
+      <ul><li>Three Roblox games and two web apps, with design docs, balance simulations and automated tests behind the games.</li><li>Learned the unglamorous parts of game development: economy balancing, anti-exploit checks and player analytics.</li></ul>
     </article>
   </div>
 
@@ -420,16 +423,17 @@ const PROJ=[
  icons:["cherry","seven","diamond_blue","gem_purple","crown","trophy","rocket","star","medal","heart","moneybag","sparkle_bonus","lemon","bell","clover","coin_stack"],
  story:["Jun 21 · repo created","Design brief + working rules written","Upgrade plan drafted from outside reviews"],
  note:"Symbol set shown below is the game's real icon set."},
-{id:"stf",kick:"ROBLOX · 2026",plat:"Roblox",title:"+1 Spin to Fly",short:"A flight game where I applied every lesson about security and data.",
+{id:"stf",kick:"ROBLOX · 2026",plat:"Roblox",title:"+1 Spin to Fly",short:"Spin on a gymnastics bar, let go, and fly. Twenty shoes, twenty tricks, ten zones.",
  art:'<div class="cl" style="top:18%;width:90px"></div><div class="cl" style="top:62%;width:130px;animation-delay:-6s"></div><div class="big">+1</div>',artc:"stf",cc:"#fffaf0",
- pitch:"The next game after Fight To Steal, built on its lessons: every server number lives in config, and nothing the client sends can reach a player's save.",
+ pitch:"Spin on a high bar, let go, and fly down a road through ten zones. The next game after Fight To Steal, built on its lessons: every server number lives in config, and nothing the client sends can reach a player's save.",
  tags:["Roblox","Luau","Anti-exploit","Analytics"],
  loop:["SPIN","LAUNCH","FLY","EARN","UPGRADE","SPIN AGAIN"],
- built:["A Guard that wraps every remote call: shape checks, number limits, rate limiting and one call in flight per player","Refusals go to the player as a notice and to analytics with a reason","An analytics registry that only sends declared events, with first-session funnels and quit-point tracking","Studio sessions never send data, they just print","Pacing tuned in a Python simulator that mirrors the in-game config line for line"],
+ built:["Twenty pairs of shoes, from Sneakers to Galaxy Thrusters, each with its own trail and look","Twenty gymnastic dismounts, from a tuck back to a triple full, that the character throws on its own after letting go of the bar","Six bar tiers, Wood to Galaxy, unlocked by rebirths","Ten themed road zones, from beach and jungle to snow, volcano and the moon","Playtime gifts, a Hall of Fame, a market and a leaderboard","A Guard that wraps every remote call: shape checks, number limits, rate limiting and one call in flight per player","An analytics registry that only sends declared events, with first-session funnels and quit-point tracking","Pacing tuned in a Python simulator that mirrors the in-game config line for line"],
  rules:[["01","Every number lives in Config. Nothing is hard-coded."],["02","The client never sends a number that reaches a profile."],["03","Every feature ships behind a flag."],["04","If it isn't in the analytics registry, it isn't recorded."]],
- stats:[["~8,000","lines of Luau"],["23","client modules"],["159","lines in the anti-exploit Guard"],["1","Python sim to tune pacing"]],
- story:["Built after the Fight To Steal audit","Reuses its Guard, Analytics and config-flag patterns"],
- note:"Screenshots to come."},
+ stats:[["~18,700","lines of Luau"],["20","shoe tiers"],["20","gymnastic dismounts"],["10","road zones"]],
+ gal:["stf-1","stf-2","stf-3","stf-4","stf-5"],
+ story:["Built after the Fight To Steal audit","Reuses its Guard, Analytics and config-flag patterns","Oct 4 · road zones dressed","Oct 6 · flips and twists added","Oct 7 · gifts, new landscapes and new bars"],
+ note:"Screenshots are from the game running in Studio."},
 {id:"fam",kick:"WEB APP · SEP 2026",plat:"Web",title:"Family Cart",short:"A shared shopping list that syncs live and sorts itself in store-walking order.",
  art:'<div class="mini"><h4><span>העגלה המשפחתית</span><span>🛒</span></h4><div class="r"><i></i>עגבניות<span class="sec">ירקות</span></div><div class="r"><i></i>חלב<span class="sec">חלב</span></div><div class="r d"><i></i>לחם<span class="sec">מאפים</span></div><div class="r"><i></i>שוקולד<span class="sec">חטיפים</span></div></div>',artc:"fam",cc:"#fffaf0",
  pitch:"No login, no accounts. One long random link is the cart, and everyone in the family sees changes the second they happen.",
@@ -439,7 +443,17 @@ const PROJ=[
  rules:[["01","The secret is the link: a 16+ character random id, and carts can't be listed."],["02","Database rules whitelist every field, with type and size limits."],["03","Items are rendered as text, never HTML."],["04","Brand names only decide the aisle when no product word matched, so \"Elite coffee\" stays coffee."]],
  stats:[["1,583","lines of code, no framework"],["12","store sections"],["~950","product & brand words"],["14","commits, all in one day"]],
  story:["Sep 30 · shared cart","Same day · Firebase, sorting, installable app","Same day · voice, WhatsApp import, 3 redesigns","Next: price comparison from Israeli chains' public price files"],
- note:"Hebrew-first interface."}
+ note:"Hebrew-first interface."},
+{id:"chess",kick:"WEB APP · OCT 2026",plat:"Web",title:"Chess Coach",short:"A free game review that teaches. The engine runs in your browser, so there is nothing to pay for.",
+ art:'<div class="cb"><img src="assets/chess/bQ.svg" alt="" style="left:6%;top:14%"><img src="assets/chess/wK.svg" alt="" style="right:8%;top:10%;animation-delay:-1.5s"><img src="assets/chess/wN.svg" alt="" style="left:38%;top:32%;width:104px;animation-delay:-3s"><img src="assets/chess/bR.svg" alt="" style="left:10%;bottom:8%;animation-delay:-2s"><img src="assets/chess/wP.svg" alt="" style="right:14%;bottom:10%;animation-delay:-4s"></div>',artc:"chess",cc:"#fffaf0",
+ pitch:"Load your recent chess.com games and get more than a list of blunders: three lessons per game, drills where you find the better move, and a view of what to work on across all of them.",
+ tags:["JavaScript","Stockfish (WASM)","chess.js","No backend"],
+ loop:["LOAD GAMES","ENGINE REVIEW","3 KEY LESSONS","FIND THE MOVE","TRACK PROGRESS"],
+ built:["Loads recent chess.com games by username (12, 25, 50 or 100, filtered by time control), or paste a PGN","Stockfish 19 running as parallel workers in the browser, with background batch analysis and saved results so a review opens instantly","Per game: accuracy, estimated strength, three key lessons with find-the-better-move drills, and a full game viewer","A dashboard with estimated strength, accuracy trend, habits and a phase and colour breakdown","A \"what to work on\" list of recurring mistake types, with how-to steps and free Lichess practice links","A \"copy AI coach prompt\" button, so the user can paste it into any chat instead of the app paying for an API"],
+ rules:[["01","Free to run. No server, no build step, no monthly bill."],["02","Games and progress stay in the user's own browser (localStorage). Nothing is uploaded."],["03","No paid API calls. The AI-coach prompt is something you copy, not something I pay for."],["04","A review has to teach. Every game ends in three lessons, not a wall of numbers."]],
+ stats:[["1,117","lines in one file, no framework"],["0","servers or monthly costs"],["3","lessons per game"],["100","games per batch review"]],
+ story:["Oct 7 · built and shipped in one day","Same day · set up auto-deploy from GitHub","Next: a practice mode built from your saved blunder positions"],
+ note:"Live at chessido.netlify.app."}
 ];
 
 /* ---------- build ---------- */
