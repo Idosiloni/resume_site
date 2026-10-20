@@ -2,7 +2,7 @@
 
 A game-style resume. Static HTML, no build step.
 
-- `index.html`: the whole site (English + Hebrew, right-to-left)
+- `index.html`: the whole site (English + Hebrew, right-to-left, light + dark theme)
 - `i18n.js`: Hebrew translations
 - `assets/`: photo, project art and icons
 
