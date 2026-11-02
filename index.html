@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#fff3da">
 <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("theme")==="dark"){document.documentElement.dataset.theme="dark";document.querySelector('meta[name=theme-color]').content="#15112b"}}catch(e){}</script>
 <title>Ido Siloni — Player One</title>
-<meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a realtime family app, a free chess coach, and a lot of lessons.">
+<meta name="description" content="Ido Siloni: Air Force shift manager turned game and app builder. Three Roblox games, a Unity game, three web apps and an AI tool, built with Claude Code as co-pilot.">
 <link rel="canonical" href="https://ido-siloni.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ido Siloni — Player One">
-<meta property="og:description" content="Former Air Force shift manager, now building Roblox games and web apps with AI as co-pilot. Pick a cartridge.">
+<meta property="og:description" content="Former Air Force shift manager, now building games, apps and AI tools with Claude Code as co-pilot. Pick a cartridge.">
 <meta property="og:url" content="https://ido-siloni.vercel.app/">
 <meta property="og:image" content="https://ido-siloni.vercel.app/og.png?v=2">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -130,6 +130,16 @@ html[dir=rtl] .cart:hover .go i{transform:translateX(-5px)}
 .mini .r{display:flex;gap:9px;align-items:center;padding:7px 0;border-top:2px dashed #ddd}
 .mini .r i{width:16px;height:16px;border:2px solid var(--line);border-radius:5px;flex:none}
 .mini .r.d{opacity:.4;text-decoration:line-through}.mini .r.d i{background:var(--ink)}
+.art.nf{background:linear-gradient(160deg,#0f5c34,#22a85a)}
+.art.nf img.pho{position:absolute;top:24px;left:50%;width:150px;transform:translateX(-50%) rotate(-3deg);border:3px solid var(--line);border-radius:20px;box-shadow:5px 5px 0 var(--shc)}
+.art.doc{background:#14112a;color:#b6f23c;flex-direction:column;align-items:flex-start;justify-content:center;padding:0 28px;font:500 14px/2 "DM Mono",monospace}
+.art.doc div{white-space:nowrap}.art.doc .d{color:#fff3da}.art.doc .cur{margin-left:4px;animation:bl 1s steps(2) infinite}
+.art.fix{background:linear-gradient(135deg,#1b1633,#7a1e35);flex-direction:column;gap:12px}
+.art.fix .slip{width:200px;display:flex;justify-content:space-between;background:#fff3da;color:#1b1633;border:3px solid var(--line);border-radius:10px;padding:8px 14px;font:700 15px "DM Mono",monospace;box-shadow:4px 4px 0 #000}
+.art.fix .slip:nth-child(2){transform:rotate(2deg)}
+.art.fix .heatbar{width:200px;display:flex;align-items:center;gap:10px;color:#fff3da;font:700 12px "DM Mono",monospace;letter-spacing:.1em}
+.art.fix .heatbar i{flex:1;height:14px;border:3px solid #fff3da;border-radius:99px;overflow:hidden}.art.fix .heatbar b{display:block;width:72%;height:100%;background:#ff5a36}
+.cs .live{display:flex;gap:12px;flex-wrap:wrap}
 .mini .sec{font-size:11px;background:var(--lime);border:2px solid var(--line);border-radius:6px;padding:0 6px;margin-inline-start:auto}
 
 /* inventory */
@@ -214,16 +224,17 @@ dialog::backdrop{background:rgba(27,22,51,.6);backdrop-filter:blur(4px)}
 .season h3{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;margin-bottom:6px}
 .season .sub{color:var(--mut);margin-bottom:18px}
 .gantt{background:var(--card);border:var(--bd);border-radius:20px;box-shadow:var(--sh);padding:18px 18px 12px;direction:ltr}
-.gx{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:0 12px;margin-bottom:10px}
+.gx{display:grid;grid-template-columns:176px 1fr;align-items:center;gap:0 12px;margin-bottom:10px}
 .gx .nm{font:700 15px "Bricolage Grotesque",Heebo,sans-serif;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gx .tr{position:relative;height:30px}.gx .tr i{position:absolute;top:0;bottom:0;width:1px;background:var(--grid)}
 .gx .bar{position:absolute;top:3px;bottom:3px;min-width:12px;border:3px solid var(--line);border-radius:99px;background:var(--c);cursor:pointer;font:500 11px "DM Mono",monospace;display:flex;align-items:center;padding:0 8px;white-space:nowrap;color:var(--ink);transition:transform .15s,box-shadow .15s}
 .gx .bar:hover,.gx .bar:focus-visible{transform:translateY(-2px);box-shadow:3px 3px 0 var(--shc)}
 .gx .bar.grow{animation:gw 1s cubic-bezier(.2,.8,.2,1) both;transform-origin:left}
 @keyframes gw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-.gax{display:grid;grid-template-columns:150px 1fr;gap:0 12px;font:500 12px "DM Mono",monospace;color:var(--mut);margin-top:4px}
+.gax{display:grid;grid-template-columns:176px 1fr;gap:0 12px;font:500 12px "DM Mono",monospace;color:var(--mut);margin-top:4px}
 .gax div{position:relative;height:18px}.gax div span{position:absolute;transform:translateX(-50%)}
-@media(max-width:640px){.gx,.gax{grid-template-columns:92px 1fr}.gx .nm{font-size:13px}.gx .bar{font-size:0}}
+.gx .bl{position:absolute;top:50%;transform:translateY(-50%);font:500 11px "DM Mono",monospace;white-space:nowrap;pointer-events:none}
+@media(max-width:640px){.gx,.gax{grid-template-columns:92px 1fr}.gx .nm{font-size:13px}.gx .bar{font-size:0}.gx .bl{display:none}}
 #ach{position:fixed;left:14px;bottom:14px;z-index:40;font:700 14px "DM Mono",monospace;background:var(--card);border:var(--bd);border-radius:99px;box-shadow:3px 3px 0 var(--shc);padding:6px 12px;cursor:pointer;color:var(--fg)}
 #ach:hover{transform:translate(-1px,-1px)}
 #achp{position:fixed;left:14px;bottom:58px;z-index:40;width:min(300px,calc(100vw - 28px));background:var(--card);border:var(--bd);border-radius:16px;box-shadow:var(--sh);padding:14px 16px;direction:ltr}
@@ -372,12 +383,12 @@ html[lang=he] .cnav small{text-transform:none}
     <div class="kick">// 01 player</div>
     <h2>Calm under<br>pressure.</h2>
     <p>For <mark>more than three years</mark> I managed shifts in an Air Force communications unit: round-the-clock coverage, several teams at once, and soldiers who counted on me. I learned to decide fast without losing sight of the big picture.</p>
-    <p>I studied <mark>cyber and computer science</mark> in high school. Now I combine that with AI tools to build things. On my own, I've made <mark>three Roblox games, a realtime family shopping app and a free chess coach.</mark></p>
-    <p>I learn by building. Roblox Studio, Luau, Firebase, Vercel and more: I picked up each one by using it on a real project. Hand me a new tool and I'll be productive with it fast.</p>
+    <p>I studied <mark>cyber and computer science</mark> in high school. Now I combine that with AI tools to build things. On my own, I've made <mark>three Roblox games, a Unity game, three web apps and an AI skill that tells me why players quit.</mark></p>
+    <p>I learn by building. Roblox Studio, Luau, Unity, Firebase, Supabase and more: I picked up each one by using it on a real project. And I work with Claude Code every day: I set the design and the rules, it writes and tests the code, and I check the result. I've connected it to Roblox Studio, Unity and Blender, and written a custom skill for it. Hand me a new tool and I'll be productive with it fast.</p>
     <p style="font-size:17px;color:var(--mut)">Native Hebrew, fluent English. Off the clock: volleyball, CrossFit, basketball, and a lot of gaming.</p>
   </div>
   <div class="nums reveal">
-    <div class="num"><b data-n="5">0</b><span>projects built</span></div>
+    <div class="num"><b data-n="8">0</b><span>projects built</span></div>
     <div class="num"><b>3+</b><span>years of 24/7 shift work</span></div>
     <div class="num"><b data-n="850" data-plus="1">0</b><span>design decisions logged for Fight To Steal</span></div>
     <div class="num"><b data-n="14">0</b><span>commits in a single day on Family Cart</span></div>
@@ -387,7 +398,7 @@ html[lang=he] .cnav small{text-transform:none}
 <section id="work"><div class="wrap">
   <div class="reveal"><div class="kick">// 02 games &amp; apps</div>
   <h2>Pick a cartridge.</h2>
-  <p class="lead">Five projects I built start to finish. Open one for the full story: the core loop, the rules I set for myself, and the numbers.</p></div>
+  <p class="lead">Eight projects I built start to finish, plus a game still at the concept stage. Open one for the full story: the core loop, the rules I set for myself, and the numbers.</p></div>
   <div class="shelf stag" id="shelf"></div>
   <div class="season reveal" id="season"></div>
 </div></section>
@@ -462,13 +473,13 @@ html[lang=he] .cnav small{text-transform:none}
         <svg class="badge" viewBox="0 0 80 80" role="img" aria-label="Builder badge"><circle cx="40" cy="40" r="34" fill="#ff5a36" stroke="#1b1633" stroke-width="4"/><path d="M24 30l-10 10 10 10M56 30l10 10-10 10M45 22l-10 36" fill="none" stroke="#fff3da" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div><h3>Builder</h3><div class="org">Games &amp; apps, with AI as co-pilot</div></div>
       </div>
-      <ul><li>Three Roblox games and two web apps, with design docs, balance simulations and automated tests behind the games.</li><li>Learned the unglamorous parts of game development: economy balancing, anti-exploit checks and player analytics.</li></ul>
+      <ul><li>Three Roblox games, a Unity game, three web apps and an AI tool, with design docs, balance simulations and automated tests behind them.</li><li>Learned the unglamorous parts of game development: economy balancing, anti-exploit checks and player analytics.</li><li>Work with Claude Code every day, connected to Roblox Studio, Unity and Blender through MCP, plus a custom Claude skill, Game Doctor, that diagnoses where players quit.</li></ul>
     </article>
   </div>
 
   <div class="extras reveal">
     <div class="ex"><h4>Languages</h4><p>Hebrew (native)<br>English (fluent)</p></div>
-    <div class="ex"><h4>Skills</h4><p>Java, Python, Word, PowerPoint. Fast, independent learner.</p></div>
+    <div class="ex"><h4>Skills</h4><p>Java, Python, Claude Code, MCP, Word, PowerPoint. Fast, independent learner.</p></div>
     <div class="ex"><h4>Off duty</h4><p>Volleyball, CrossFit, basketball, computers and games.</p></div>
   </div>
 </div></section>
@@ -501,21 +512,27 @@ html[lang=he] .cnav small{text-transform:none}
   <div class="cs" id="cs"></div>
 </dialog>
 
-<script src="i18n.js?v=2"></script>
+<script src="i18n.js?v=3"></script>
 <script>
 /* ---------- editable data ---------- */
-const STATS=[["Leadership",95,"#ff5a36"],["Under pressure",92,"#8b5cf6"],["Learns new tools",96,"#ffd24a"],["Game design",85,"#b6f23c"],["Python",72,"#62c8ff"],["Java",70,"#ff8fc7"],["English",90,"#ff5a36"]];
-const TICK=["Shift manager","Outstanding Soldier 2023","Roblox developer","10 units cyber & CS","Hebrew + English","Firebase","Luau","Python","Claude Code","Ships games","Learns tools fast"];
+const STATS=[["Leadership",95,"#ff5a36"],["Under pressure",92,"#8b5cf6"],["Learns new tools",96,"#ffd24a"],["AI agents",93,"#2dd4bf"],["Game design",85,"#b6f23c"],["Python",72,"#62c8ff"],["Java",70,"#ff8fc7"],["English",90,"#ff5a36"]];
+const TICK=["Shift manager","Outstanding Soldier 2023","Roblox developer","Unity","Claude Code","MCP + skills","10 units cyber & CS","Hebrew + English","Firebase","Supabase","Luau","Python","Ships games","Learns tools fast"];
 const TOOLS=[
  ["Claude Code","Plan → build → verify, on every project","CC","#b6f23c","daily driver"],
+ ["MCP servers","Claude drives Roblox Studio, Unity and Blender","MC","#b6f23c","daily driver"],
+ ["Claude skills","Custom skills and subagents, like Game Doctor","Sk","#62c8ff","solid"],
  ["Roblox Studio","All three games live here","RS","#b6f23c","daily driver"],
  ["Luau","Server + client game code","Lu","#b6f23c","daily driver"],
- ["Studio MCP","Claude controls Studio directly","MC","#62c8ff","solid"],
+ ["Unity","Surf Pool Sim: C#, URP, UI Toolkit","Un","#62c8ff","solid"],
+ ["Godot","The Fixer prototypes","Gd","#ff8fc7","learning"],
+ ["Blender","Low-poly models built by Python scripts","Bl","#62c8ff","solid"],
  ["Firebase","Firestore realtime + Hosting","Fb","#b6f23c","daily driver"],
- ["Vercel","This site, deployed","Vc","#62c8ff","solid"],
- ["Python","Balance & pacing simulators","Py","#62c8ff","solid"],
+ ["Supabase","Postgres with row-level security","Sb","#62c8ff","solid"],
+ ["React + Vite","Neighborhood Football","Rx","#62c8ff","solid"],
+ ["JavaScript","Family Cart and Chess Coach, no framework","JS","#62c8ff","solid"],
+ ["Python","Balance simulators and Game Doctor","Py","#62c8ff","solid"],
  ["Java","High-school CS, 10 units","Jv","#62c8ff","solid"],
- ["JavaScript","Family Cart, no framework","JS","#62c8ff","solid"],
+ ["Vercel","This site, deployed","Vc","#62c8ff","solid"],
  ["Git","History for every repo","Gt","#62c8ff","solid"],
  ["AI image gen","Thumbnails & icon sets","AI","#62c8ff","solid"],
  ["HTML + CSS","This site and Family Cart","Ht","#62c8ff","solid"]
@@ -575,7 +592,7 @@ const PROJ=[
  note:"Hebrew-first interface. Screenshots show a demo cart, not a real family's list."},
 {id:"chess",kick:"WEB APP · OCT 2026",plat:"Web",title:"Chess Coach",short:"A free game review that teaches. The engine runs in your browser, so there is nothing to pay for.",
  art:'<div class="cb"><img src="assets/chess/bQ.svg" alt="" style="left:6%;top:14%"><img src="assets/chess/wK.svg" alt="" style="right:8%;top:10%;animation-delay:-1.5s"><img src="assets/chess/wN.svg" alt="" style="left:38%;top:32%;width:104px;animation-delay:-3s"><img src="assets/chess/bR.svg" alt="" style="left:10%;bottom:8%;animation-delay:-2s"><img src="assets/chess/wP.svg" alt="" style="right:14%;bottom:10%;animation-delay:-4s"></div>',artc:"chess",cc:"var(--card)",
- link:"https://chessido.netlify.app",
+ link:"https://chessido.netlify.app",repo:"https://github.com/Idosiloni/chess-coach",
  pitch:"Load your recent chess.com games and get more than a list of blunders: three lessons per game, drills where you find the better move, and a view of what to work on across all of them.",
  tags:["JavaScript","Stockfish (WASM)","chess.js","No backend"],
  loop:["LOAD GAMES","ENGINE REVIEW","3 KEY LESSONS","FIND THE MOVE","TRACK PROGRESS"],
@@ -584,7 +601,11 @@ const PROJ=[
  stats:[["1,117","lines in one file, no framework"],["0","servers or monthly costs"],["3","lessons per game"],["100","games per batch review"]],
  gal:["chess-3","chess-1","chess-2"],
  story:["Oct 7 · built and shipped in one day","Same day · set up auto-deploy from GitHub","Next: a practice mode built from your saved blunder positions"],
- note:"Screenshots show the review of a public game, Morphy vs the Duke of Brunswick (1858), analysed by the app."}
+ note:"Screenshots show the review of a public game, Morphy vs the Duke of Brunswick (1858), analysed by the app."},
+{id:"surf",kick:"UNITY · OCT 2026",plat:"Unity",title:"Surf Pool Sim",short:"A first-person wave-pool tycoon: run the wave machine, serve surfers and grow a run-down pool into a surf resort.",art:"<img class=\"cov\" src=\"assets/surf-1.jpg\" alt=\"An island with a small wave pool, seen from above\">",cc:"var(--card)",repo:"https://github.com/Idosiloni/surfpool",pitch:"You inherit a run-down surf wave pool from Uncle Kai. Walk around in first person, sell sessions, send the waves, keep surfers happy and grow it into the best surf park around.",tags:["Unity 6","C#","URP","Shader Graph","UI Toolkit","Blender"],loop:["SURFERS ARRIVE","BUY A SESSION","RIDE WAVES","EARN + REPUTATION","UPGRADE","BIGGER PARK"],built:["A faked wave on purpose: an animated mesh plus Shader Graph water, with surfers following a path, so there is no fluid simulation to slow the game down","Waves that break by age (foam ball, bore, soup), barrels, sets and lulls, and famous presets like Pipeline and Teahupo'o","Up to six pools in one connected basin, from the starter pool to a Surf Ranch with a single wave about 23 seconds long","Staff and wages, shops (acai bar, gear shop, board shaper), a day cycle, an end-of-day report, daily events and save/load","A story with Uncle Kai: missions in chapters, a rival park and an ending","Low-poly people and props generated by Blender Python scripts and exported to Unity","A UI Toolkit interface with a \"Sunset Surf Shop\" look, and a HUD I cut from about 23% of the screen to 6-8% after playtesting","Performance: the water math moved onto all CPU cores and far pools refresh less often, cutting water from 106 ms to 16 ms a frame at park level 30 (in the Editor, profiler on)"],rules:[["01","Every milestone ends playable. One feature per session."],["02","I'm the designer and playtester. Claude writes the code and drives the Unity Editor over MCP, and nobody hand-edits scene or prefab files while the Editor is connected."],["03","Fake the wave. An animated mesh and shaders, no fluid simulation."],["04","Do jobs by hand before automating them: prices gate automation behind hand-sent waves."],["05","Every design change starts with a research note: pacing, HUD, wave look."]],stats:[["148","commits in 4 days"],["~29,000","lines of C# in 158 files"],["37","research and design notes"],["16 ms","water cost per frame, down from 106"]],gal:["surf-1","surf-2","surf-3","surf-4"],story:["Oct 20 · project started: a first-person pool, a wave to roll, the first surfer","Oct 21 · people with faces, a surf photographer, closing time, instant replay","Oct 22 · wave breaking, a quiet HUD, one connected basin, story chapters","Oct 23 · surf physics on the wave face, a coach, the whole island"],note:"Screenshots are from the game running in the Unity Editor."},
+{id:"nf",kick:"WEB APP · NOV 2026",plat:"Web",title:"Neighborhood Football",short:"Signups, fair teams and stats for a weekly neighborhood football game. No accounts: your personal code is your login.",art:"<img class=\"pho\" src=\"assets/nf-1.jpg\" alt=\"Neighborhood Football home screen\">",artc:"nf",cc:"var(--card)",link:"https://neighborhood-football.vercel.app",repo:"https://github.com/Idosiloni/neighborhood-football",pitch:"Every week a group of friends plays football. The app handles who's coming, splits everyone into balanced teams from private peer rankings, runs the match clock and the score, runs the MVP vote and keeps the season stats.",tags:["React 19","Vite","Supabase","Postgres","PWA","Hebrew UI"],loop:["SIGN UP","SPLIT TEAMS","PLAY + SCORE","VOTE MVP","SEASON STATS"],built:["Sign up for the week's game in one tap, or paste the WhatsApp list and it picks out the names","Fair teams: players rank each other in private ballots, ranks become scores, and the split balances team strength, with goalkeepers handled on their own","A rotation after each match: the winners give players so teams stay even when people go home","A match clock with extra time, first-to-N and golden goal, with every goal logged, celebrated and given a sound","MVP voting and season stats: top scorers, assists and more","A FIFA-style player card, drawn as a 1080×1350 image to share on WhatsApp or Instagram","Several groups per phone, each with its own join code and admin. Installable, Hebrew and right-to-left"],rules:[["01","No accounts. A personal code is the login, and the database works out who you are and which group you're in."],["02","Every read and write is limited to your own group by row-level security, and the rules are tested against a real Postgres (PGlite)."],["03","Ratings and MVP votes stay private: they can only be reached through database functions."],["04","A group always keeps at least one admin, enforced by a database trigger."],["05","Without server keys the app runs as an offline demo with sample data, so anyone can try it."]],stats:[["148","automated tests passing"],["~9,000","lines of code, tests included"],["2","modes: live and offline demo"],["0","accounts or passwords"]],gal:["nf-1","nf-2","nf-3"],galph:1,story:["Oct 31 · connected to a Supabase database","Nov 2 · live on Vercel, first commit on GitHub","Next: other sports, since the football rules already sit in one file"],note:"Hebrew-first interface. Screenshots are the offline demo with made-up players, not a real group."},
+{id:"doc",kick:"AI TOOL · OCT 2026",plat:"AI tool",title:"Game Doctor",short:"A Claude skill that reads a live game's player funnel, finds where players quit and proposes the fix. It never touches the game.",art:"<div class=\"d\">$ doctor weakest</div><div>&gt; find the leak</div><div>&gt; trace it to the code</div><div>&gt; check what I already tried</div><div>&gt; propose. never edit.<span class=\"cur\">▮</span></div>",artc:"doc",cc:"var(--card)",pitch:"After shipping +1 Spin to Fly I had data and no time to read it. So I built a read-only toolkit and a skill that turns any Claude session into the game's analyst: it finds the worst funnel step, traces it to the code, checks the design docs for what was already tried, and writes a proposal I can accept or reject.",tags:["Claude skill","Python","Agent design","Analytics","Read-only"],loop:["READ THE FUNNEL","FIND THE LEAK","TRACE IT TO CODE","CHECK HISTORY","WRITE A PROPOSAL","I DECIDE"],built:["A Python command line with 8 commands (reports, weakest, report, diff, grep, read, history, propose), standard library only, nothing to install","A SKILL.md that tells the model its role, its hard rules and a fixed six-step method","A read-only guard in code: every read is checked to stay inside the game folder, and the only thing it can write is a proposal file","A history search over the design docs, so it won't re-suggest something I already tried or ruled out","A diff command that compares two reports to tell whether a published change helped","Proposals in a fixed format: evidence, cause (file and line), the exact change, the risk, and how we'll know it worked"],rules:[["01","Never edit the game. The model only reads, and I decide and apply every change."],["02","Ignore small samples. Steps with fewer than 50 players and changes under about 5 points are noise."],["03","A funnel shows where players leave, not why. Causes are labelled hypotheses unless the code proves them."],["04","If the docs say something was already tried, say so instead of repeating it."]],stats:[["8","commands"],["213","lines of Python, no installs"],["43","lines of instructions in the skill"],["2","proposals written so far"]],story:["Oct 10 · first two proposals: an early-session leak, then whether a new publish helped","Built on the analytics funnels from +1 Spin to Fly"],note:"A tool, so there are no screenshots. It reads private analytics, so the numbers stay off this page."},
+{id:"fix",kick:"GAME DESIGN · OCT 2026",plat:"Godot",title:"The Fixer",short:"A roguelite about betting on sports and rigging matches to pay off a mob debt. So far: a concept and two prototypes.",art:"<div class=\"slip\"><span>HOME</span><b>1.80</b></div><div class=\"slip\"><span>AWAY</span><b>2.10</b></div><div class=\"heatbar\"><span>HEAT</span><i><b></b></i></div>",artc:"fix",cc:"var(--card)",pitch:"A single-player incremental roguelite in the spirit of Balatro. You're a small-time gambler in debt to the mob: read the odds, buy inside information and, when it's worth the risk, lean on a ref. Every edge raises your Heat, and too much Heat gets you raided.",tags:["Godot 4.7","GDScript","Game design","Claude Code Game Studios"],loop:["READ THE WEEKLY BOARD","BUY INSIGHTS","PLACE BETS","WATCH THE MATCHES","PAY THE QUOTA","MANAGE HEAT"],built:["A full game concept document: pillars, an MDA analysis of the feelings I'm aiming for, a target player profile and a scope estimate","A web prototype that tests one question: do wins feel like the player's own decisions rather than luck? Three versions, after two playtests","A Godot prototype of the core loop (start with little cash, bet, make the weekly quota), built one feature at a time with rule switches","Node scripts that tune the loop and smoke-test it","A design registry in YAML that keeps every game entity in one place","Set up on Claude Code Game Studios, an open-source template (by Donchitos, MIT) of 49 subagents, 74 skills and hooks that work like a game studio"],rules:[["01","No real-money gambling and no loot boxes: a premium game with fake money only."],["02","Prototype before production. Every prototype starts with the question it has to answer."],["03","Every strong play has a cost: rigging, and even winning too big, raises Heat."],["04","I make every decision. The agents ask questions and catch mistakes."]],stats:[["2","prototypes, one question each"],["2","playtests so far"],["7–9","months, my solo estimate"],["49","agents in the studio template"]],story:["Oct 19 · concept written, project set up on Godot 4.7","Oct 19 · a web prototype of the betting loop, then a Godot prototype of the quota loop","Next: playtest, then decide if the loop is worth building"],note:"Early stage, so no screenshots yet. The studio template is open source by Donchitos (MIT); the game concept is mine."}
 ];
 
 /* ---------- build ---------- */
@@ -597,17 +618,18 @@ function renderBuilt(){
  $('#shelf').innerHTML=PROJ.map(p=>`<button class="cart in" data-id="${p.id}" style="--cc:${p.cc}" aria-label="${U('open','Open case study')}: ${p.title}"><div class="grip"></div><div class="art ${p.artc||''}">${p.art}${p.link?`<span class="livep">● ${U('liveb','LIVE')}</span>`:''}</div><div class="meta"><div class="row"><span class="plat">${p.plat}</span><span>${PH(p,'yr')||p.kick.split(' · ')[1]}</span></div><h3>${p.title}</h3><p>${PH(p,'short')}</p><span class="go">${U('open','Open case study')} <i>${rtl()?'←':'→'}</i></span></div></button>`).join('');
  document.querySelectorAll('.stag').forEach(c=>[...c.children].forEach((k,i)=>k.style.setProperty('--i',i)));
 }
-const SEASON={from:Date.UTC(2026,5,15),to:Date.UTC(2026,9,15),
- rows:[["ltt","Lucky Ticket Tycoon",[2026,5,21],[2026,6,31],"#ff8fc7","Jun 21 → Jul 31"],["fts","Fight To Steal",[2026,6,27],[2026,9,2],"#ffd24a","Jul 27 → Oct 2"],["fam","Family Cart",[2026,8,30],[2026,8,30],"#62c8ff","Sep 30"],["stf","+1 Spin to Fly",[2026,9,3],[2026,9,10],"#b6f23c","Oct 3 → now"],["chess","Chess Coach",[2026,9,7],[2026,9,7],"#ff5a36","Oct 7"]],
- months:[["Jul","יולי",[2026,6,1]],["Aug","אוג׳",[2026,7,1]],["Sep","ספט׳",[2026,8,1]],["Oct","אוק׳",[2026,9,1]]]};
-const SEASON_HE={t:"מפת העונה",s:"חמישה פרויקטים בארבעה חודשים. לחצו על פס כדי לפתוח את הסיפור המלא.",names:{ltt:"Lucky Ticket Tycoon",fts:"Fight To Steal",fam:"העגלה המשפחתית",stf:"+1 Spin to Fly",chess:"Chess Coach"},d:{ltt:"21 ביוני → 31 ביולי",fts:"27 ביולי → 2 באוקטובר",fam:"30 בספטמבר",stf:"3 באוקטובר → היום",chess:"7 באוקטובר"}};
+const SEASON={from:Date.UTC(2026,5,15),to:Date.UTC(2026,10,10),
+ rows:[["ltt","Lucky Ticket Tycoon",[2026,5,21],[2026,6,31],"#ff8fc7","Jun 21 → Jul 31"],["fts","Fight To Steal",[2026,6,27],[2026,9,2],"#ffd24a","Jul 27 → Oct 2"],["fam","Family Cart",[2026,8,30],[2026,8,30],"#62c8ff","Sep 30"],["stf","+1 Spin to Fly",[2026,9,3],[2026,9,10],"#b6f23c","Oct 3 → now"],["chess","Chess Coach",[2026,9,7],[2026,9,7],"#ff5a36","Oct 7"],["doc","Game Doctor",[2026,9,10],[2026,9,10],"#8b5cf6","Oct 10"],["fix","The Fixer",[2026,9,19],[2026,9,19],"#f43f5e","Oct 19 · concept"],["surf","Surf Pool Sim",[2026,9,20],[2026,9,23],"#2dd4bf","Oct 20 → 23"],["nf","Neighborhood Football",[2026,9,31],[2026,10,2],"#4ade80","Oct 31 → Nov 2"]],
+ months:[["Jul","יולי",[2026,6,1]],["Aug","אוג׳",[2026,7,1]],["Sep","ספט׳",[2026,8,1]],["Oct","אוק׳",[2026,9,1]],["Nov","נוב׳",[2026,10,1]]]};
+const SEASON_HE={t:"מפת העונה",s:"שמונה פרויקטים ורעיון אחד בפחות מחמישה חודשים. לחצו על פס כדי לפתוח את הסיפור המלא.",names:{ltt:"Lucky Ticket Tycoon",fts:"Fight To Steal",fam:"העגלה המשפחתית",stf:"+1 Spin to Fly",chess:"Chess Coach",doc:"Game Doctor",fix:"The Fixer",surf:"Surf Pool Sim",nf:"כדורגל שכונה"},d:{ltt:"21 ביוני → 31 ביולי",fts:"27 ביולי → 2 באוקטובר",fam:"30 בספטמבר",stf:"3 באוקטובר → היום",chess:"7 באוקטובר",doc:"10 באוקטובר",fix:"19 באוקטובר · קונספט",surf:"20 → 23 באוקטובר",nf:"31 באוקטובר → 2 בנובמבר"}};
 function renderSeason(){
  const S=SEASON,span=S.to-S.from,pos=a=>(Date.UTC(...a)-S.from)/span*100;
  const grid=S.months.map(m=>`<i style="left:${pos(m[2])}%"></i>`).join('');
  const rows=S.rows.map(r=>{const l=pos(r[2]),w=Math.max(.9,pos(r[3])-l+1.2);const nm=rtl()?SEASON_HE.names[r[0]]:r[1],dd=rtl()?SEASON_HE.d[r[0]]:r[5];
-  return `<div class="gx"><span class="nm">${nm}</span><div class="tr">${grid}<button type="button" class="bar grow" data-id="${r[0]}" style="left:${l}%;width:${w}%;--c:${r[4]}" aria-label="${nm}: ${dd}">${dd}</button></div></div>`}).join('');
+  const out=w<22,left=l+w>60;
+  return `<div class="gx"><span class="nm">${nm}</span><div class="tr">${grid}<button type="button" class="bar grow${out?' sh':''}" data-id="${r[0]}" style="left:${l}%;width:${w}%;--c:${r[4]}" aria-label="${nm}: ${dd}">${out?'':dd}</button>${out?`<span class="bl" aria-hidden="true" style="${left?`right:${100-l}%;margin-right:8px`:`left:${l+w}%;margin-left:8px`}">${dd}</span>`:''}</div></div>`}).join('');
  const mo=S.months.map(m=>`<span style="left:${pos(m[2])}%">${rtl()?m[1]:m[0]}</span>`).join('');
- $('#season').innerHTML=`<h3>${rtl()?SEASON_HE.t:'The season map'}</h3><p class="sub">${rtl()?SEASON_HE.s:'Five projects in four months. Click a bar to open the full story.'}</p><div class="gantt">${rows}<div class="gax"><span></span><div>${mo}</div></div></div>`;
+ $('#season').innerHTML=`<h3>${rtl()?SEASON_HE.t:'The season map'}</h3><p class="sub">${rtl()?SEASON_HE.s:'Eight projects and a concept in under five months. Click a bar to open the full story.'}</p><div class="gantt">${rows}<div class="gax"><span></span><div>${mo}</div></div></div>`;
 }
 document.addEventListener('click',e=>{const b=e.target.closest('.gx .bar');if(b)open(b.dataset.id)});
 renderBuilt();renderSeason();
@@ -621,7 +643,7 @@ function fillDialog(id){
  const rules=PH(p,'rulesT'),stats=PH(p,'statsT');
  $('#cs').innerHTML=`
   <h3 id="dlgTitle">${p.title}</h3><p class="pitch">${PH(p,'pitch')}</p>
-  ${p.link?`<p class="live"><a class="btn" href="${p.link}" target="_blank" rel="noopener">${U('live','Try it live')} ↗</a></p>`:''}
+  ${p.link||p.repo?`<p class="live">${p.link?`<a class="btn" href="${p.link}" target="_blank" rel="noopener">${U('live','Try it live')} ↗</a>`:''}${p.repo?`<a class="btn alt" href="${p.repo}" target="_blank" rel="noopener">${U('repo','View the code')} ↗</a>`:''}</p>`:''}
   <div class="tags">${PH(p,'tags').map(t=>`<span>${t}</span>`).join('')}</div>
   <h4>${U('loop','The core loop')}</h4><div class="loop" id="loop">${L(PH(p,'loop'))}</div>
   <h4>${U('nums','By the numbers')}</h4><div class="cstats">${p.stats.map((s,i)=>`<div style="--cc:${['#b6f23c','#62c8ff','#ff8fc7','#ffd24a'][i%4]}"><b>${s[0]}</b><span>${stats?stats[i]:s[1]}</span></div>`).join('')}</div>
@@ -667,7 +689,7 @@ if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matche
 $('#f').addEventListener('submit',e=>{e.preventDefault();const b=encodeURIComponent($('#m').value+"\n\n— "+$('#n').value+" ("+$('#e').value+")");location.href="mailto:ido.siloni@gmail.com?subject="+encodeURIComponent("Hello from your site")+"&body="+b});
 
 /* ---------- achievements ---------- */
-const ACH=[["open","Cartridge collector","Open a case study","אספן קלטות","פתחו מקרה בוחן"],["all","Completionist","Open all five case studies","השלמה מלאה","פתחו את כל חמשת מקרי הבוחן"],["lang","Polyglot","Switch the language","פוליגלוט","החליפו שפה"],["end","Reached the end","Scroll to 100% page XP","הגעתם לסוף","גללו עד 100%"],["cv","Recruiter's pick","Download the CV","בחירת המגייס","הורידו את קורות החיים"],["reel","Director's cut","Watch the reel to the end","הבימאי","צפו בסרטון עד הסוף"],["theme","Night owl","Switch to dark mode","ינשוף לילה","עברו למצב כהה"],["secret","Cheat code","Find the secret (hint: ↑↑↓↓←→←→BA)","קוד רמאות","מצאו את הסוד (רמז: ↑↑↓↓←→←→BA)"]];
+const ACH=[["open","Cartridge collector","Open a case study","אספן קלטות","פתחו מקרה בוחן"],["all","Completionist","Open every case study","השלמה מלאה","פתחו את כל מקרי הבוחן"],["lang","Polyglot","Switch the language","פוליגלוט","החליפו שפה"],["end","Reached the end","Scroll to 100% page XP","הגעתם לסוף","גללו עד 100%"],["cv","Recruiter's pick","Download the CV","בחירת המגייס","הורידו את קורות החיים"],["reel","Director's cut","Watch the reel to the end","הבימאי","צפו בסרטון עד הסוף"],["theme","Night owl","Switch to dark mode","ינשוף לילה","עברו למצב כהה"],["secret","Cheat code","Find the secret (hint: ↑↑↓↓←→←→BA)","קוד רמאות","מצאו את הסוד (רמז: ↑↑↓↓←→←→BA)"]];
 let got={},seen=new Set(),booted=false;
 try{got=JSON.parse(localStorage.getItem('ach')||'{}')||{}}catch(e){got={}}
 const achBtn=$('#ach'),achPanel=$('#achp'),toast=$('#toast');let toastT;
@@ -691,11 +713,11 @@ document.addEventListener('keydown',e=>{const k=e.key.length===1?e.key.toLowerCa
 achDraw();
 /* ---------- reel ---------- */
 const reel=$('#reel'),rStage=$('#rStage'),rBar=$('#rBar'),rPlay=$('#rPlay');
-const RCOL={ltt:'#ff8fc7',fts:'#ffd24a',fam:'#62c8ff',stf:'#b6f23c',chess:'#ff5a36'};
+const RCOL={ltt:'#ff8fc7',fts:'#ffd24a',fam:'#62c8ff',stf:'#b6f23c',chess:'#ff5a36',doc:'#8b5cf6',fix:'#f43f5e',surf:'#2dd4bf',nf:'#4ade80'};
 const RH={intro:'מאחראי משמרת לבונה משחקים ואפליקציות',outro:'בואו נבנה משהו.',ctl:['הקודם','הבא','סגור','נגן','השהה'],label:'סרטון היכרות'};
-const RMS=4200;let ri=0,rt=null,rOn=true,rs=[];
+const RMS=3400;let ri=0,rt=null,rOn=true,rs=[];
 function reelScenes(){
- const order=['ltt','fts','fam','stf','chess'];
+ const order=['ltt','fts','fam','stf','chess','doc','fix','surf','nf'];
  return [{c:'#fff3da',k:'PLAYER 1',t:T('Ido Siloni','עידו סילוני'),l:T('Shift manager → game & app builder',RH.intro)},
   ...order.map(id=>{const p=PROJ.find(x=>x.id===id),st=PH(p,'statsT');return {c:RCOL[id],k:PH(p,'kick'),t:p.title,l:PH(p,'short'),s:p.stats.slice(0,3).map((s,i)=>[s[0],st?st[i]:s[1]])}}),
   {c:'#8b5cf6',k:T('CONTINUE?','להמשיך?'),t:T("Let's make something.",RH.outro),l:'ido.siloni@gmail.com'}];
