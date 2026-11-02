@@ -64,6 +64,10 @@ h1 .u svg{position:absolute;inset-inline-start:0;bottom:-10px;width:100%;height:
 .sub{font-size:clamp(19px,2.3vw,25px);max-width:520px;margin:26px 0 30px;line-height:1.35}
 .sub b{background:linear-gradient(transparent 55%,var(--hl) 55%)}
 .cta{display:flex;gap:16px;flex-wrap:wrap}
+.latest{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:-8px 0 26px;font:500 13px "DM Mono",Heebo,monospace}
+.latest .new{background:var(--lime);color:var(--ink);border:2px solid var(--line);border-radius:6px;padding:2px 8px;font-weight:700}
+.latest button{font:inherit;color:var(--fg);background:var(--card);border:2px solid var(--line);border-radius:99px;padding:4px 12px;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.latest button:hover,.latest button:focus-visible{transform:translateY(-2px);box-shadow:3px 3px 0 var(--shc)}
 /* ID card */
 .card3d{perspective:900px}
 .idc{background:var(--card);border:var(--bd);border-radius:26px;box-shadow:8px 8px 0 var(--shc);padding:18px;transform-style:preserve-3d;transition:transform .15s;position:relative;overflow:hidden}
@@ -360,13 +364,14 @@ html[lang=he] .cnav small{text-transform:none}
   <div>
     <div class="pl"><span>PLAYER 1</span><span>LVL 23</span><span>Hod HaSharon, IL</span></div>
     <h1>Ido<br>Siloni<span class="u" aria-hidden="true"><svg viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M2 10 C 50 2, 100 14, 150 8 S 250 4, 298 9" fill="none" stroke="#ff5a36" stroke-width="6" stroke-linecap="round"/></svg></span></h1>
-    <p class="sub">Former Air Force <b>shift manager</b>. Now I build <b>games and apps</b> with AI as my co-pilot.</p>
+    <p class="sub">Former Air Force <b>shift manager</b>. Now I build <b>games, apps and AI tools</b> with Claude Code as my co-pilot.</p>
+    <div class="latest" id="latest"></div>
     <div class="cta"><a class="btn" href="#work">▶ Press start</a><a class="btn alt" href="#contact">Say hi</a><a class="btn alt" href="Ido-Siloni-CV.pdf" download>Download CV ↓</a><button class="btn alt" id="reelBtn" type="button">▶ Watch the reel</button></div>
   </div>
   <div class="card3d"><div class="idc" id="idc">
     <div class="top"><span>PLAYER CARD</span><b>CLASS: BUILDER</b></div>
     <div class="pic"><img src="assets/photo.jpg?v=2" alt="Portrait of Ido Siloni"><span class="tag">AFK: never</span></div>
-    <h3>Ido Siloni</h3><div class="cls">Shift Manager → Game &amp; App Builder</div>
+    <h3>Ido Siloni</h3><div class="cls">Shift Manager → Game, App &amp; AI Builder</div>
     <div class="stats" id="stats"></div>
   </div></div>
 </div></section>
@@ -507,7 +512,7 @@ html[lang=he] .cnav small{text-transform:none}
   <div class="cs" id="cs"></div>
 </dialog>
 
-<script src="i18n.js?v=5"></script>
+<script src="i18n.js?v=6"></script>
 <script>
 /* ---------- editable data ---------- */
 const STATS=[["Leadership",95,"#ff5a36"],["Under pressure",92,"#8b5cf6"],["Learns new tools",96,"#ffd24a"],["AI agents",93,"#2dd4bf"],["Game design",85,"#b6f23c"],["Python",72,"#62c8ff"],["Java",70,"#ff8fc7"],["English",90,"#ff5a36"]];
@@ -531,6 +536,7 @@ const TOOLS=[
  ["AI image gen","Thumbnails & icon sets","AI","#62c8ff","solid"],
  ["HTML + CSS","This site and Family Cart","Ht","#62c8ff","solid"]
 ];
+const LATEST=['nf','surf','doc'];
 let lang='en',curId=null;
 const rtl=()=>lang==='he';
 const T=(en,he)=>rtl()&&he!=null&&he!==''?he:en;
@@ -553,6 +559,7 @@ const $=s=>document.querySelector(s);
 let barsOn=false;
 function renderBuilt(){
  $('#stats').innerHTML=STATS.map((s,i)=>`<div class="st"><span>${T(s[0],STATS_HE[i])}</span><div class="bar"><b data-w="${s[1]}" style="--c:${s[2]};${barsOn?'width:'+s[1]+'%':''}"></b></div></div>`).join('');
+ $('#latest').innerHTML=`<span class="new">${U('new','NEW')}</span>`+LATEST.map(id=>`<button type="button" data-open="${id}">${PROJ.find(p=>p.id===id).title}</button>`).join('');
  $('#tick').innerHTML=[...TICK,...TICK,...TICK,...TICK].map((t,i)=>`<span>${T(t,TICK_HE[i%TICK.length])}</span>`).join('');
  $('#inv').innerHTML=TOOLS.map((t,i)=>`<div class="slot" style="--rc:${t[3]}"><em>${U(t[4],t[4])}</em><div class="ic">${t[2]}</div><b>${t[0]}</b><span>${T(t[1],TOOLS_HE[i])}</span></div>`).join('');
  $('#shelf').innerHTML=PROJ.map(p=>`<button class="cart in" data-id="${p.id}" style="--cc:${p.cc}" aria-label="${U('open','Open case study')}: ${p.title}"><div class="grip"></div><div class="art ${p.artc||''}">${p.art}${p.link?`<span class="livep">● ${U('liveb','LIVE')}</span>`:''}</div><div class="meta"><div class="row"><span class="plat">${p.plat}</span><span>${PH(p,'yr')||p.kick.split(' · ')[1]}</span></div><h3>${p.title}</h3><p>${PH(p,'short')}</p><span class="go">${U('open','Open case study')} <i>${rtl()?'←':'→'}</i></span></div></button>`).join('');
@@ -601,6 +608,7 @@ function fillDialog(id){
 }
 function open(id){lastBtn=document.activeElement;fillDialog(id);dlg.showModal();dlg.scrollTop=0}
 document.addEventListener('click',e=>{const c=e.target.closest('.cart');if(c)open(c.dataset.id)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b){open(b.dataset.open);ach('open');seen.add(b.dataset.open);if(seen.size>=PROJ.length)ach('all')}});
 $('#close').onclick=()=>dlg.close();
 $('#cs').addEventListener('click',e=>{const b=e.target.closest('.cnav button');if(!b)return;const cls=b.className;fillDialog(b.dataset.go);dlg.scrollTop=0;const nb=$('#cs .cnav .'+cls);if(nb)nb.focus({preventScroll:true});seen.add(b.dataset.go);if(seen.size>=PROJ.length)ach('all')});
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
@@ -702,7 +710,7 @@ document.addEventListener('click',e=>{if(hud.classList.contains('open')&&!e.targ
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&hud.classList.contains('open')){menu(false);menuBtn.focus()}});
 matchMedia('(min-width:1061px)').addEventListener('change',e=>{if(e.matches)menu(false)});
 /* ---------- language toggle ---------- */
-const SKIP='#stats,#tick,#inv,#shelf,#season,#ach,#achp,#toast,#dlg,#reel,script,style,#lang,#theme,#menu,.xp';
+const SKIP='#latest,#stats,#tick,#inv,#shelf,#season,#ach,#achp,#toast,#dlg,#reel,script,style,#lang,#theme,#menu,.xp';
 const INL=new Set(['BR','B','MARK','I','EM']);
 const norm=x=>x.replace(/\s+/g,' ').trim();
 const regs=[],missing=new Set();

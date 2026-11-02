@@ -71,8 +71,8 @@ window.HE={
 "Name": "שם",
 "Email": "אימייל",
 "Message": "הודעה",
-"Former Air Force <b>shift manager</b>. Now I build <b>games and apps</b> with AI as my co-pilot.": "לשעבר <b>אחראי משמרת</b> בחיל האוויר. היום אני בונה <b>משחקים ואפליקציות</b> עם AI כטייס משנה.",
-"Shift Manager → Game &amp; App Builder": "אחראי משמרת ← בונה משחקים ואפליקציות",
+"Former Air Force <b>shift manager</b>. Now I build <b>games, apps and AI tools</b> with Claude Code as my co-pilot.": "לשעבר <b>אחראי משמרת</b> בחיל האוויר. היום אני בונה <b>משחקים, אפליקציות וכלי AI</b> עם Claude Code כטייס משנה.",
+"Shift Manager → Game, App &amp; AI Builder": "אחראי משמרת ← בונה משחקים, אפליקציות וכלי AI",
 "For <mark>more than three years</mark> I managed shifts in an Air Force communications unit: round-the-clock coverage, several teams at once, and soldiers who counted on me. I learned to decide fast without losing sight of the big picture.": "במשך <mark>יותר משלוש שנים</mark> ניהלתי משמרות ביחידת תקשוב בחיל האוויר: מענה סביב השעון, כמה צוותים במקביל וחיילים שהסתמכו עליי. למדתי להחליט מהר בלי לאבד את התמונה הגדולה.",
 "Native Hebrew, fluent English. Off the clock: volleyball, CrossFit, basketball, and a lot of gaming.": "עברית שפת אם, אנגלית ברמה גבוהה. אחרי העבודה: כדורעף, קרוספיט, כדורסל, והמון גיימינג.",
 "years of 24/7 shift work": "שנות עבודה במשמרות 24/7",
@@ -572,6 +572,7 @@ window.TICK_HE=[
 window.UI_HE={
 "live": "נסו בעצמכם",
 "liveb": "חי",
+"new": "חדש",
 "prev": "הקודם",
 "next": "הבא",
 "open": "פתחו מקרה בוחן",
