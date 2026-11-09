@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ido-siloni.vercel.app/sitemap.xml
