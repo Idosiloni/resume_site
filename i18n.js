@@ -62,6 +62,7 @@ window.HE={
 "© 2026 Ido Siloni · built with Claude Code ·": "© 2026 עידו סילוני · נבנה עם Claude Code ·",
 "GitHub": "GitHub",
 "GitHub: Idosiloni ↗": "GitHub: Idosiloni ↗",
+"LinkedIn: Ido Siloni ↗": "LinkedIn: עידו סילוני ↗",
 "Sections": "מקטעים",
 "Portrait of Ido Siloni": "דיוקן של עידו סילוני",
 "Scouts badge": "סמל צופים",
